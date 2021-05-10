@@ -148,6 +148,7 @@ class RegisterController extends Controller
             'current_address' => $request->current_address,
             'password' => $request->password,
         ]);
+
         // $user->first_name = $request->first_name;
         // $user->last_name = $request->last_name;
         // $user->email = strtolower($request->email);
@@ -215,7 +216,7 @@ class RegisterController extends Controller
     public function signUpAsParent(Request $request, User $user)
     {
 
-        dd($request);
+        // dd($request->all());
         $validate = $this->signUpAsParentRules($request);
 
         // Run validation
@@ -228,33 +229,42 @@ class RegisterController extends Controller
         }
 
         // Create new user
-        $user = new User();
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'date_of_birth' => $request->date_of_birth,
+            'current_address' => $request->current_address,
+            'password' => $request->password,
+        ]);
 
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = strtolower($request->email);
-        $user->password = Hash::make(strtolower($request->password));
+        // $user = new User();
+
+        // $user->first_name = $request->first_name;
+        // $user->last_name = $request->last_name;
+        // $user->email = strtolower($request->email);
+        // $user->password = Hash::make(strtolower($request->password));
 
         // create new parent
-        $user->parent()->gender = $request->gender;
-        $user->parent()->parent_phone = $request->parent_phone;
-        $user->parent()->date_of_birth = $request->date_of_birth;
-        $user->parent()->current_address = $request->current_address;
-        $user->parent()->permanent_address = $request->permanent_address;
+        // $user->parent()->gender = $request->gender;
+        // $user->parent()->parent_phone = $request->parent_phone;
+        // $user->parent()->date_of_birth = $request->date_of_birth;
+        // $user->parent()->current_address = $request->current_address;
+        // $user->parent()->permanent_address = $request->permanent_address;
 
-        // $user->parent()->create([
-        //     'gender' => $request->gender,
-        //     'parent_phone' => $request->parent_phone,
-        //     'date_of_birth' => $request->date_of_birth,
-        //     'current_address' => $request->current_address,
-        //     'permanent_address' => $request->permanent_address,
-        // ]);
+        $user->parent()->create([
+            'gender' => $request->gender,
+            'parent_phone' => $request->parent_phone,
+            'date_of_birth' => $request->date_of_birth,
+            'current_address' => $request->current_address,
+            'permanent_address' => $request->permanent_address,
+        ]);
 
         $user->assignRole('Parent');
 
         // Try user save or catch error if any
         try {
-            $user->parent()->save();
+            $user->save();
 
             return response()->json([
                 'success' => true,

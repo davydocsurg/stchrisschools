@@ -18,7 +18,7 @@ class CreateParentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->enum('gender', ['male', 'female']);
             $table->string('parent_phone');
-            $table->string('child_licence');
+            // $table->string('child_licence');
             $table->string('current_address');
             $table->string('permanent_address');
             $table->timestamps();
