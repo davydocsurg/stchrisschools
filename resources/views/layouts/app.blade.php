@@ -22,10 +22,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/vendor/animate/animate.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('assets/vendor/animsition/css/animsition.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('assets/dashboard/css/icons.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ url('assets/fonts/linearicons-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/slick/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/MagnificPopup/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="animsition">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -63,9 +72,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -85,9 +93,39 @@
         </main>
     </div>
 
+    <script src="{{ url('assets/dashboard/js/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/vendor/animsition/js/animsition.min.js') }}"></script>
+<script src="{{ url('assets/vendor/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url('assets/vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ url('assets/js/slick-custom.js') }}"></script>
+    <script src="{{ url('assets/vendor/parallax100/parallax100.js') }}"></script>
+    <script src="{{ url('assets/vendor/jquery.countdown-2.2.0/jquery.countdown.min.js') }}"></script>
+    <script>
+        $('.parallax100').parallax100();
+
+    </script>
+    <script src="{{ url('assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script>
+        $('.js-pscroll').each(function() {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function() {
+                ps.update();
+            })
+        });
+
+    </script>
+    <script src="{{ url('assets/js/main.js') }}"></script>
+
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+    <script src="{{ asset('js/custom.js') }}"></script>
     @stack('scripts')
 </body>
 

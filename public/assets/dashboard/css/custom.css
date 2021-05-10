@@ -1,0 +1,156 @@
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.219);
+    border-radius: 6px;
+}
+
+.modal::-webkit-scrollbar {
+    width: 0px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.219);
+}
+
+.logo-admin {
+    border-bottom: solid #626ed4 1px !important;
+    border: solid #626ed4 1px;
+}
+
+.logo-admin img {
+    height: 50px
+}
+
+.account-card .account-card-content {
+    padding: 12px !important;
+    padding-top: 20px !important;
+}
+
+.error-message p {
+    margin: 0 !important;
+}
+
+.top-bal {
+    font-size: 18px;
+    color: black !important;
+    font-weight: 600 !important;
+}
+
+.top-photo {
+    height: 40px !important;
+    width: 40px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 24px !important;
+    margin-top: 16px !important;
+    border: solid 1px;
+}
+
+#create-contest-big-btn {
+    height: 60px;
+    border: solid 1px #626ed4;
+    border-radius: 5px;
+}
+
+#create-contest-big-btn p {
+    font-size: 20px;
+    padding: 12px;
+    color: #626ed4;
+}
+
+#create-contest-big-btn:hover {
+    cursor: pointer;
+}
+
+.contest-form-photo {
+    height: 200px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    border: solid 1px;
+    border-radius: 5px;
+}
+.contest-form-photo:hover {
+    cursor: pointer;
+}
+
+.card {
+    box-shadow: 0 0 13px 2px rgba(191, 191, 195, 0.44) !important;
+}
+
+#add-cc-btn {
+    height: 40px;
+    border: solid 1px #626ed4;
+    border-radius: 5px;
+}
+
+#add-cc-btn p {
+    font-size: 15px;
+    padding: 6px;
+    color: #626ed4;
+}
+
+#add-cc-btn:hover {
+    cursor: pointer;
+}
+
+.category-del:hover {
+    cursor: pointer;
+}
+
+.one-alert {
+    z-index: 10000;
+    position: fixed;
+    top: 35px;
+    right: 25px;
+}
+
+.copy-link {
+    font-size: 16px; padding: 0px 5px;
+}
+
+.copy-link:hover {
+    cursor: pointer;
+}
+
+.add-cons-btn {
+    height: 40px;
+    border: solid 1px #626ed4;
+    border-radius: 5px;
+}
+
+.add-cons-btn p {
+    font-size: 15px;
+    padding: 6px;
+    color: #626ed4;
+}
+
+.add-cons-btn:hover {
+    cursor: pointer;
+}
+
+.btn:hover {
+    cursor: pointer !important;
+}
+
+.cropped-img:hover {
+    box-shadow: 0 0 12px 3px #adadad;
+    cursor: pointer;
+}
+
+.cons-list-photo {
+    height: 40px !important;
+    background-size: cover !important;
+    border: solid 1px;
+    border-radius: 5px;
+}

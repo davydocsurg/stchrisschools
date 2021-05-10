@@ -4,15 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parent_ extends Model
+class Parents extends Model
 {
-
-    protected $table = 'parent';
+    protected $table = 'parents';
 
     protected $fillable = [
-        // 'first_name',
-        // 'last_name',
-        // 'parent_email',
+        'user_id',
         'child_licence',
         'parent_phone',
         'gender',
@@ -20,4 +17,9 @@ class Parent_ extends Model
         'permanent_address',
 
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

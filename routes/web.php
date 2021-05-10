@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,13 @@ Route::get('/', function () {
 
 // guest routes
 
-Route::post('/signup', 'RegisterController@signUp')->name('sign_up');
+// teacher registeration
+Route::post('/teacher_signup', [RegisterController::class, 'signUpAsTeacher'])->name('parent_sign_up');
+
+// parent registeration
+Route::post('/parent_signup', [RegisterController::class, 'signUpAsParent'])->name('parent_sign_up');
+
+// Route::post('/signup', 'RegisterController@signUp')->name('sign_up');
 
 // Route::get('/signup', [ViewController::class, 'adminSignup'])->name('adminSignup');
 

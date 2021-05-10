@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile_picture')->default('avatar.png');
             // $table->enum('select', ['teacher', 'parent']);
-            $table->string('select_role');
             $table->rememberToken();
             $table->timestamps();
         });

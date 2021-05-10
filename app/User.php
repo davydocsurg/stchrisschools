@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +39,16 @@ class User extends Authenticatable
 
     public function teacher()
     {
-        return $this->hasOne(Teacher::class);
+        return $this->hasOne(Teacher::class); //, 'user_id', 'id'
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function parent()
+    {
+        return $this->hasOne(Parents::class);
     }
 }
