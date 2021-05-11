@@ -123,97 +123,97 @@ class RegisterController extends Controller
      * Sign Up As A Teacher
      * @return json
      */
-    public function signUpAsTeacher(Request $request, User $user)
-    {
-        // dd($request->all());
-        $validate = $this->signUpAsTeacherRules($request);
+    // public function signUpAsTeacher(Request $request, User $user)
+    // {
+    //     // dd($request->all());
+    //     $validate = $this->signUpAsTeacherRules($request);
 
-        // Run validation
-        if ($validate->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validate->errors(),
-                'status' => 400,
-            ]);
-        }
+    //     // Run validation
+    //     if ($validate->fails()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => $validate->errors(),
+    //             'status' => 400,
+    //         ]);
+    //     }
 
-        // Create new user
-        // $user = new User();
+    //     // Create new user
+    //     // $user = new User();
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'date_of_birth' => $request->date_of_birth,
-            'current_address' => $request->current_address,
-            'password' => $request->password,
-        ]);
+    //     $user = User::create([
+    //         'first_name' => $request->first_name,
+    //         'last_name' => $request->last_name,
+    //         'email' => $request->email,
+    //         'date_of_birth' => $request->date_of_birth,
+    //         'current_address' => $request->current_address,
+    //         'password' => $request->password,
+    //     ]);
 
-        // $user->first_name = $request->first_name;
-        // $user->last_name = $request->last_name;
-        // $user->email = strtolower($request->email);
-        // $user->password = Hash::make(strtolower($request->password));
+    //     // $user->first_name = $request->first_name;
+    //     // $user->last_name = $request->last_name;
+    //     // $user->email = strtolower($request->email);
+    //     // $user->password = Hash::make(strtolower($request->password));
 
-        // create new teacher
-        // $user->teacher()->gender = $request->gender;
-        // $user->teacher()->teacher_phone = $request->teacher_phone;
-        // $user->teacher()->date_of_birth = $request->date_of_birth;
-        // $user->teacher()->current_address = $request->current_address;
-        // $user->teacher()->permanent_address = $request->permanent_address;
+    //     // create new teacher
+    //     // $user->teacher()->gender = $request->gender;
+    //     // $user->teacher()->teacher_phone = $request->teacher_phone;
+    //     // $user->teacher()->date_of_birth = $request->date_of_birth;
+    //     // $user->teacher()->current_address = $request->current_address;
+    //     // $user->teacher()->permanent_address = $request->permanent_address;
 
-        $user->teacher()->create([
-            'gender' => $request->gender,
-            'teacher_phone' => $request->teacher_phone,
-            'date_of_birth' => $request->date_of_birth,
-            'current_address' => $request->current_address,
-            'permanent_address' => $request->permanent_address,
-        ]);
+    //     $user->teacher()->create([
+    //         'gender' => $request->gender,
+    //         'teacher_phone' => $request->teacher_phone,
+    //         'date_of_birth' => $request->date_of_birth,
+    //         'current_address' => $request->current_address,
+    //         'permanent_address' => $request->permanent_address,
+    //     ]);
 
-        $user->assignRole('Teacher');
+    //     $user->assignRole('Teacher');
 
-        // Try user save or catch error if any
-        try {
-            $user->save();
-            // $user->teacher()->save();
+    //     // Try user save or catch error if any
+    //     try {
+    //         $user->save();
+    //         // $user->teacher()->save();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Teacher\'s Signup Successful',
-                'status' => 200,
-            ]);
-        } catch (\Throwable $th) {
-            Log::error($th);
-            return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
-        }
-    }
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Teacher\'s Signup Successful',
+    //             'status' => 200,
+    //         ]);
+    //     } catch (\Throwable $th) {
+    //         Log::error($th);
+    //         return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+    //     }
+    // }
 
     /**
      * Sign Up As A Teacher Rules
      * @return object The validator object
      */
-    public function signUpAsTeacherRules(Request $request)
-    {
-        return Validator::make($request->all(), [
-            'first_name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
-            'email' => 'required|email|unique:users', // email:rfc,dns should be used in production
-            // 'phone' => 'required|numeric|digits_between:5,11|unique:users,phone',
-            'password' => 'required|alpha_dash|min:8|max:30|confirmed',
-            'gender' => [
-                'required', Rule::in(['male', 'female']),
-            ],
-            'teacher_phone' => 'required|numeric|digits_between:5,11|unique:teachers,teacher_phone',
-            'date_of_birth' => 'required|date',
-            'current_address' => 'required|string|max:250',
-            'permanent_address' => 'required|string|max:250',
-        ]);
-    }
+    // public function signUpAsTeacherRules(Request $request)
+    // {
+    //     return Validator::make($request->all(), [
+    //         'first_name' => ['required', 'string', 'max:50'],
+    //         'last_name' => ['required', 'string', 'max:50'],
+    //         'email' => 'required|email|unique:users', // email:rfc,dns should be used in production
+    //         // 'phone' => 'required|numeric|digits_between:5,11|unique:users,phone',
+    //         'password' => 'required|alpha_dash|min:8|max:30|confirmed',
+    //         'gender' => [
+    //             'required', Rule::in(['male', 'female']),
+    //         ],
+    //         'teacher_phone' => 'required|numeric|digits_between:5,11|unique:teachers,teacher_phone',
+    //         'date_of_birth' => 'required|date',
+    //         'current_address' => 'required|string|max:250',
+    //         'permanent_address' => 'required|string|max:250',
+    //     ]);
+    // }
 
     /**
      * Sign Up As A Parent
      * @return json
      */
-    public function signUpAsParent(Request $request, User $user)
+    public function signUpAsParent(Request $request)
     {
 
         // dd($request->all());
@@ -306,7 +306,55 @@ class RegisterController extends Controller
      */
     public function signUpAsStudent(Request $request)
     {
-        # code...
+        // dd($request->all());
+        $validate = $this->signUpAsStudentRules($request);
+
+        // Run validation
+        if ($validate->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validate->errors(),
+                'status' => 400,
+            ]);
+        }
+
+        // Create new user
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'date_of_birth' => $request->date_of_birth,
+            'current_address' => $request->current_address,
+            'password' => $request->password,
+        ]);
+
+        $user->student()->create([
+            'gender' => $request->gender,
+            // 'student_class_id' => $request->student_class_id,
+            // 'parent_id' => $request->parent_id,
+            // 'roll_number' => $request->roll_number,
+            'student_phone' => $request->student_phone,
+            'date_of_birth' => $request->date_of_birth,
+            'current_address' => $request->current_address,
+            'permanent_address' => $request->permanent_address,
+        ]);
+
+        $user->assignRole('Student');
+
+        // Try user save or catch error if any
+        try {
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Student\'s Signup Successful',
+                'status' => 200,
+            ]);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+        }
     }
 
     /**
@@ -317,15 +365,15 @@ class RegisterController extends Controller
     {
         return Validator::make($request->all(), [
             'gender' => [
-                'required', Rule::in(['Male', 'Female']),
+                'required', Rule::in(['male', 'female']),
             ],
-            'roll_number' => [
-                'required',
-                'numeric',
-                Rule::unique('students')->where(function ($query) use ($request) {
-                    return $query->where('class_id', $request->class_id);
-                }),
-            ],
+            // 'roll_number' => [
+            //     'required',
+            //     'numeric',
+            //     Rule::unique('students')->where(function ($query) use ($request) {
+            //         return $query->where('student_class_id', $request->student_class_id);
+            //     }),
+            // ],
             'student_phone' => 'required|numeric|digits_between:5,11|unique:students,student_phone',
             // 'child_licence' => 'required|unique:parents',
             'date_of_birth' => 'required|date',

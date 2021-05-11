@@ -22,4 +22,9 @@ class Parents extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function children()
+    {
+        return $this->hasMany(Student::class, 'parent_id');
+    }
 }

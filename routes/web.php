@@ -22,8 +22,8 @@ Route::get('/', function () {
 
 // guest routes
 
-// teacher registeration
-Route::post('/teacher_signup', [RegisterController::class, 'signUpAsTeacher'])->name('parent_sign_up');
+// student registeration
+Route::post('/student_signup', [RegisterController::class, 'signUpAsStudent'])->name('student_sign_up');
 
 // parent registeration
 Route::post('/parent_signup', [RegisterController::class, 'signUpAsParent'])->name('parent_sign_up');

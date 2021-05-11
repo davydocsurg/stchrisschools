@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-        // fillable fields
+    // fillable fields
     protected $fillable = [
         'user_id',
         'parent_id',
-        'grade_id',
+        'student_class_id',
         'roll_number',
         'gender',
         'student_phone',
@@ -19,7 +19,7 @@ class Student extends Model
         'permanent_address',
     ];
 
-        // student:user relationship
+    // student:user relationship
     public function user()
     {
         return $this->belongsTo(User::class);
