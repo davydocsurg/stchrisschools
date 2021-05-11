@@ -528,9 +528,9 @@
 
             goPost(url, data)
                 .then(res => {
-                    console.log(data);
+
                     // spin('addcons')
-                    // location.reload()
+                    location.href = `{{ url('/login') }}`
                 })
                 .catch(err => {
                     // spin('addcons')
@@ -547,9 +547,9 @@
 
             goPost(url, data)
                 .then(res => {
-                    console.log(data);
+                    // console.log(data);
                     // spin('addcons')
-                    location.reload()
+                    location.href = `{{ url('/login') }}`
                 })
                 .catch(err => {
                     spin('addcons')
