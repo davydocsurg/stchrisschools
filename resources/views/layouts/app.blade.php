@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,7 +25,7 @@
     <link href="{{ url('assets/vendor/animate/animate.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('assets/vendor/animsition/css/animsition.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url('assets/dashboard/css/icons.css') }}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ url('assets/fonts/linearicons-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/fonts/linearicons-v1.0.0/icon-font.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/select2/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/slick/slick.css') }}">
@@ -73,7 +73,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -95,7 +95,7 @@
 
     <script src="{{ url('assets/dashboard/js/jquery.min.js') }}"></script>
     <script src="{{ url('assets/vendor/animsition/js/animsition.min.js') }}"></script>
-<script src="{{ url('assets/vendor/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url('assets/vendor/isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ url('assets/vendor/slick/slick.min.js') }}"></script>
     <script src="{{ url('assets/js/slick-custom.js') }}"></script>
     <script src="{{ url('assets/vendor/parallax100/parallax100.js') }}"></script>

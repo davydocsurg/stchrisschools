@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 // guest routes
 
@@ -34,6 +34,6 @@ Route::post('/parent_signup', [RegisterController::class, 'signUpAsParent'])->na
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Route::post('/sign-up', 'RegisterController@adminSignup')->name('adminSignup');
 Route::post('create_teacher', [TeacherController::class, 'create_teacher'])->name('create_teacher');

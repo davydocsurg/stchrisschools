@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::DASHBOARD;
 
     /**
      * Create a new controller instance.
@@ -235,7 +235,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'date_of_birth' => $request->date_of_birth,
             'current_address' => $request->current_address,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         // $user = new User();
@@ -326,7 +326,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'date_of_birth' => $request->date_of_birth,
             'current_address' => $request->current_address,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         $user->student()->create([
