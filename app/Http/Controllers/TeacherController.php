@@ -6,61 +6,87 @@ use App\Teacher;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
     /**
-     * Get a validator for an incoming registration request.
+     * Display a listing of the resource.
      *
-     * @param  request  $data
+     * @return \Illuminate\Http\Response
      */
-    public function create_teacher(Request $request)
+    public function index()
     {
-        // Get validation rules
-        // $validate =
-        $this->create_teacher_rules($request);
+        $teachers = Teacher::with('user')->latest()->paginate(10);
 
-        // Run validation
-        // if ($validate->fails()) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => $validate->errors(),
-        //         'status' => 400,
-        //     ]);
-        // }
+        return view('backend.teachers.index', compact('teachers'));
+    }
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('backend.teachers.create');
+    }
 
-        $user->teacher()->create([
-            'gender' => $request->gender,
-            'teacher_phone' => $request->teacher_phone,
-            'date_of_birth' => $request->date_of_birth,
-            'current_address' => $request->current_address,
-            'permanent_address' => $request->permanent_address,
-        ]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        {
+            // Get validation rules
+            $validate = $this->create_teacher_rules($request);
 
-        $user->assignRole('Teacher');
+            // Run validation
+            if ($validate->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $validate->errors(),
+                    'status' => 400,
+                ]);
+            }
 
-        // $teacher = new Teacher();
+            $user = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        // $teacher->first_name = $request->first_name;
-        // $teacher->last_name = $request->last_name;
-        // $teacher->teacher_email = strtolower($request->teacher_email);
-        // $teacher->password = Hash::make(strtolower($request->password));
-        // $teacher->gender = $request->gender;
-        // $teacher->teacher_phone = $request->teacher_phone;
-        // $teacher->date_of_birth = $request->date_of_birth;
-        // $teacher->current_address = $request->current_address;
-        // $teacher->permanent_address = $request->permanent_address;
+            $user->teacher()->create([
+                'gender' => $request->gender,
+                'teacher_phone' => $request->teacher_phone,
+                'date_of_birth' => $request->date_of_birth,
+                'current_address' => $request->current_address,
+                'permanent_address' => $request->permanent_address,
+            ]);
 
-        return redirect()->back();
+            $user->assignRole('Teacher');
 
+            // Try user save or catch error if any
+            try {
+                $user->save();
+                // $user->teacher()->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Teacher\'s Signup Successful',
+                    'status' => 200,
+                ]);
+            } catch (\Throwable $th) {
+                Log::error($th);
+                return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+            }
+
+        }
     }
 
     /**
@@ -75,7 +101,7 @@ class TeacherController extends Controller
         return Validator::make($request->all(), [
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
-            'teacher_email' => 'required|string|email|max:255|unique:teachers',
+            'email' => 'required|string|email|max:255|unique:teachers',
             'password' => 'required|string|min:8|confirmed',
             'gender' => 'required|string',
             'teacher_phone' => 'required|numeric|digits_between:5,11|unique:teachers,phone',
@@ -83,5 +109,50 @@ class TeacherController extends Controller
             'current_address' => 'required|string|max:255',
             'permanent_address' => 'required|string|max:255',
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

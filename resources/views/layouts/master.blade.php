@@ -23,10 +23,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="Welcome" height="60" width="60">
-        </div>
+        @yield('preloader')
 
         {{-- navbar --}}
         @include('partials.navbar')
@@ -42,6 +39,13 @@
             <!-- Content Header (Page header) -->
 
             @yield('page_header')
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </section>
 
         </div>
     </div>
@@ -76,17 +80,24 @@
     </script>
     {{--  --}}
 
-    <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/adminlte/js/pages/dashboard.js') }}"></script>
-    {{-- <script src="{{ asset('assets/dashboard/plugins/jquery/jquery.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/dashboard/plugins/jquery-ui/jquery-ui.min.js') }}"></script> --}}
-    <script>
+    {{-- <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/dashboard/js/adminlte/js/pages/dashboard.js') }}"></script> --}}
+
+    {{-- <script src="{{ asset('assets/dashboard/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/plugins/jquery-ui/jquery-ui.min.js') }}"></script> --}}
+    {{--  --}}
+    {{-- <script src="{{ asset('assets/dashboard/plugins/jquery-knob/jquery.knob.min.js') }}"></script> --}}
+    {{-- <script>
         $.widget.bridge('uibutton', $.ui.button)
 
-    </script>
+    </script> --}}
+
     <script src="{{ asset('assets/dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
+
+    {{-- !important --}}
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 
 </body>

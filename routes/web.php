@@ -37,3 +37,18 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 // Route::post('/sign-up', 'RegisterController@adminSignup')->name('adminSignup');
 Route::post('create_teacher', [TeacherController::class, 'create_teacher'])->name('create_teacher');
+
+/** admin routes */
+Route::group(['middleware' => ['auth', 'role:Admin']], function () {
+    // teachers' management
+    Route::resource('teachers', 'TeacherController');
+    // parents' management
+    Route::resource('parents', 'ParentsController');
+    // students' management
+    Route::resource('students', 'StudentController');
+    // class management
+    Route::resource('classes', 'GradeController');
+    // subject management
+    Route::resource('subjects', 'SubjectController');
+
+});

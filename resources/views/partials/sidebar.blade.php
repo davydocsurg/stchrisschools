@@ -36,8 +36,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item menu-closed">
+                    <a href="#" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -51,20 +51,65 @@
                                 <p>Dashboard v1</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
+
+                @role('Admin')
+                <li class="nav-item">
+                    <a href="{{ route('teachers.index') }}"
+                        class="nav-link {{ request()->routeIs('teachers*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                        <p>
+                            Teachers
+                        </p>
+                    </a>
+                </li>
+
+                {{-- parents --}}
+                <li class="nav-item">
+                    <a href="{{ route('parents.index') }}"
+                        class="nav-link {{ request()->routeIs('parents*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Parents
+                        </p>
+                    </a>
+                </li>
+
+                {{-- students --}}
+                <li class="nav-item">
+                    <a href="{{ route('students.index') }}"
+                        class="nav-link {{ request()->routeIs('students*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-graduate"></i>
+                        <p>
+                            Students
+                        </p>
+                    </a>
+                </li>
+
+                {{-- classes --}}
+                <li class="nav-item">
+                    <a href="{{ route('classes.index') }}"
+                        class="nav-link {{ request()->routeIs('classes*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                            Classes
+                        </p>
+                    </a>
+                </li>
+
+                {{-- subjects --}}
+                <li class="nav-item">
+                    <a href="{{ route('subjects.index') }}"
+                        class="nav-link {{ request()->routeIs('subjects*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-align-center"></i>
+                        <p>
+                            Subjects
+                        </p>
+                    </a>
+                </li>
+                @endrole
 
 
                 <li class="nav-item">

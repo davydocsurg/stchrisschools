@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Grade;
+use App\Subject;
 use Illuminate\Http\Request;
 
-class GradeController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $classes = Grade::withCount('students')->latest()->paginate(10);
+        $subjects = Subject::with('teacher')->latest()->paginate(10);
 
-        return view('backend.classes.index', compact('classes'));
+        return view('backend.subjects.index', compact('subjects'));
     }
 
     /**

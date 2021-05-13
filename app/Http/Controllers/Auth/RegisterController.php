@@ -169,22 +169,22 @@ class RegisterController extends Controller
     //         'permanent_address' => $request->permanent_address,
     //     ]);
 
-    //     $user->assignRole('Teacher');
+        // $user->assignRole('Teacher');
 
-    //     // Try user save or catch error if any
-    //     try {
-    //         $user->save();
-    //         // $user->teacher()->save();
+        // // Try user save or catch error if any
+        // try {
+        //     $user->save();
+        //     // $user->teacher()->save();
 
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Teacher\'s Signup Successful',
-    //             'status' => 200,
-    //         ]);
-    //     } catch (\Throwable $th) {
-    //         Log::error($th);
-    //         return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
-    //     }
+        //     return response()->json([
+        //         'success' => true,
+        //         'message' => 'Teacher\'s Signup Successful',
+        //         'status' => 200,
+        //     ]);
+        // } catch (\Throwable $th) {
+        //     Log::error($th);
+        //     return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+        // }
     // }
 
     /**
