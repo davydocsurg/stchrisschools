@@ -17,7 +17,6 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->enum('gender', ['male', 'female']);
-            // $table->string('teacher_email');
             $table->string('teacher_phone');
             $table->date('date_of_birth');
             $table->string('current_address');

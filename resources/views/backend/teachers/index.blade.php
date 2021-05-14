@@ -62,6 +62,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Profile Picture</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
@@ -70,21 +71,47 @@
                                     <th>Permanent Address</th>
                                     <th>Registered At</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             @foreach ($teachers as $teacher)
                                 <tbody>
                                     <tr>
                                         <td>{{ $teacher->user->id }}</td>
+                                        <td>
+                                            {{-- <img src="{{ url($teacher->user->profile_picture) }}" --}}
+                                            <div class="image">
+                                                <img src="{{ url('storage/users/profile/' . $teacher->user->profile_picture) }}"
+                                                    class="img-circle elevation-2" alt="{{ $teacher->user->first_name }}"
+                                                    width="35">
+                                            </div>
+                                        </td>
                                         <td>{{ $teacher->user->first_name . ' ' . $teacher->user->last_name }}</td>
                                         <td>{{ $teacher->user->email }}</td>
-                                        <td>{{ $teacher->user->phone }}</td>
-                                        <td>{{ $teacher->user->date_of_birth }}</td>
-                                        <td>{{ $teacher->user->current_address }}</td>
-                                        <td>{{ $teacher->user->permanent_address }}</td>
-                                        <td>{{ $teacher->user->created_at }}</td>
+                                        <td>{{ $teacher->teacher_phone }}</td>
+                                        <td>{{ $teacher->date_of_birth }}</td>
+                                        <td>{{ $teacher->current_address }}</td>
+                                        <td>{{ $teacher->permanent_address }}</td>
+                                        <td>{{ $teacher->created_at }}</td>
                                         <td><span class="tag tag-success">Approved</span></td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="{{ route('teachers.edit', $teacher->id) }}"
+                                                        class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                </div>
 
+                                                <div class="col-md-6">
+                                                    <button class="btn btn-danger btn-sm" id="delModBtn"
+                                                        onclick="handleDelete({{ $teacher->id }})"
+                                                        data-url="{{ route('teachers.destroy', $teacher->id) }}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -108,5 +135,39 @@
             </div>
             <!-- /.card -->
         </div>
+
     </div>
+    @include('backend.modals.delete',['name' => 'teacher'])
 @endsection
+
+@push('scripts')
+    <script>
+        // $(document).ready(() => {
+        function handleDelete(id) {
+            $('#deleteModal').modal('show')
+
+            const form = document.getElementById('deleteTeacherForm')
+            form.action = `{{ route('teachers.destroy', $teacher->id) }}`
+        }
+
+        function deleteTeacher(el) {
+            offError()
+            // spin('addcons')
+
+            let data = new FormData(el.target)
+            let url = `{{ route('teachers.destroy', $teacher->id) }}`
+
+            goPost(url, data)
+                .then(res => {
+                    // console.log(data);
+                    // location.href = `{{ route('teachers.index') }}`
+                })
+                .catch(err => {
+                    // console.log(err);
+                    errorMsg(err)
+
+                })
+        }
+
+    </script>
+@endpush
