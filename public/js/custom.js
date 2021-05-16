@@ -5,28 +5,27 @@ function goGet(url) {
             type: "GET",
             url,
             statusCode: {
-                200: (res) => {
-                    if(res.status != undefined) {
-                        res.status == 200 ? resolve(res) : reject(res)
-                    }
-                    else {
-                        resolve(res)
+                200: res => {
+                    if (res.status != undefined) {
+                        res.status == 200 ? resolve(res) : reject(res);
+                    } else {
+                        resolve(res);
                     }
                 },
-                500: (err) => {
+                500: err => {
                     err.status = 500;
                     reject(err);
                 },
-                404: (err) => {
+                404: err => {
                     err.status = 404;
                     reject(err);
                 },
-                419: (err) => {
+                419: err => {
                     err.status = 419;
                     reject(err);
-                },
-            },
-        })
+                }
+            }
+        });
     });
 }
 
@@ -40,32 +39,34 @@ function goPost(url, data) {
             processData: false,
             contentType: false,
             statusCode: {
-                200: (res) => {
-                    if(res.status != undefined) {
-                        res.status == 200 ? resolve(res) : reject(res)
-                    }
-                    else {
-                        resolve(res)
+                200: res => {
+                    if (res.status != undefined) {
+                        res.status == 200 ? resolve(res) : reject(res);
+                    } else {
+                        resolve(res);
                     }
                 },
-                500: (err) => {
+                500: err => {
                     err.status = 500;
                     reject(err);
                 },
-                404: (err) => {
+                404: err => {
                     err.status = 404;
                     reject(err);
                 },
-                419: (err) => {
+                419: err => {
                     err.status = 419;
                     reject(err);
-                },
-            },
-        })
+                }
+            }
+        });
     });
 }
 
 // Handle form error
+function handleErr(err) {
+    toastr.error("Please check your credentials and try again");
+}
 function handleFormRes(res, form = false) {
     switch (res.status) {
         case 200:
@@ -77,7 +78,7 @@ function handleFormRes(res, form = false) {
                 for (const [key, value] of Object.entries(errors)) {
                     e = document.getElementById(key);
                     e.innerHTML = "";
-                    [...value].forEach((m) => {
+                    [...value].forEach(m => {
                         e.innerHTML += `<p>${m}</p>`;
                     });
                 }
@@ -145,4 +146,9 @@ function showAlert(status, message) {
             $("#alert-success").html("");
         }, 4000);
     }
+}
+
+// loading...
+function sendReq() {
+    $(".spinner-border").css("display", "inline-block");
 }

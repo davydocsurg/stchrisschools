@@ -18,7 +18,25 @@
     <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/summernote/summernote-bs4.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/fontawesome-free/css/all.min.css') }}">
+    {{-- toastr --}}
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/toastr.min.css') }}">
 </head>
+
+<style>
+    .fa-spin {
+        -webkit-animation: fa-spin 2s linear infinite;
+        animation: fa-spin 2s linear infinite;
+        animation-name: fa-spin;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-fill-mode: none;
+        animation-play-state: running;
+    }
+
+</style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -78,7 +96,8 @@
         });
 
     </script>
-    {{--  --}}
+    {{-- toastr --}}
+    <script src="{{ asset('assets/dashboard/js/toastr.min.js') }}"></script>
 
     {{-- <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/dashboard/js/adminlte/js/pages/dashboard.js') }}"></script> --}}

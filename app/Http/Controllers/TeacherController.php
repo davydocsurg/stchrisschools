@@ -18,9 +18,10 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Teacher $teacher)
     {
         $teachers = Teacher::with('user')->latest()->paginate(10);
+        // $teacher = Teacher::with('user')->findOrFail($teacher->id);
 
         return view('backend.teachers.index', compact('teachers'));
     }
@@ -115,7 +116,7 @@ class TeacherController extends Controller
 
                 return response()->json([
                     'success' => true,
-                    'message' => 'Teacher\'s Signup Successful',
+                    'message' => 'Teacher\'s Created Successful',
                     'status' => 200,
                 ]);
             } catch (\Throwable $th) {
@@ -286,7 +287,7 @@ class TeacherController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Teacher\'s Update Successful',
+                'message' => 'Teacher Updated Successful',
                 'status' => 200,
             ]);
         } catch (\Throwable $th) {

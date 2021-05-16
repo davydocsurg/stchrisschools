@@ -30,4 +30,14 @@ class Student extends Model
     {
         return $this->belongsTo(Parent::class);
     }
+
+    function class ()
+    {
+        return $this->belongsTo(Grade::class, 'class_id');
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

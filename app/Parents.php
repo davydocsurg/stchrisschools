@@ -10,7 +10,8 @@ class Parents extends Model
 
     protected $fillable = [
         'user_id',
-        'child_licence',
+        // 'child_licence',
+        'date_of_birth',
         'parent_phone',
         'gender',
         'current_address',

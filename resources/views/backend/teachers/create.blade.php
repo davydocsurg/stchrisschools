@@ -234,6 +234,8 @@
                             <div class="col-lg-6 offset-lg-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Create') }}
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                        style="display: none"></span>
                                 </button>
                             </div>
                         </div>
@@ -258,6 +260,7 @@
 
         function createTeacher(el) {
             offError()
+            sendReq()
             // spin('addcons')
 
             let data = new FormData(el.target)
@@ -269,11 +272,10 @@
                     location.href = `{{ route('teachers.index') }}`
                 })
                 .catch(err => {
-                    // spin('addcons')
-                    // console.log(err);
+
+                    handleErr(err)
                     errorMsg(err)
-                    this.errors = err.message;
-                    // handleFormRes(err)
+
                 })
         }
 
@@ -288,7 +290,7 @@
             $('#dobError').html(err.message.date_of_birth[0]);
             $('#currAddError').html(err.message.current_address[0]);
             $('#perAddError').html(err.message.permanent_address[0]);
-            $('#teacherProfError').html(err.message.profile_picture[0]);
+            // $('#teacherProfError').html(err.message.profile_picture[0]);
 
         }
 

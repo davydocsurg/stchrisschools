@@ -105,7 +105,7 @@
 
                                                 <div class="col-md-6">
                                                     <button class="btn btn-danger btn-sm" id="delModBtn"
-                                                        onclick="handleDelete({{ $teacher->id }})"
+                                                        {{-- onclick="handleDelete({{ $teacher->id }})" --}}
                                                         data-url="{{ route('teachers.destroy', $teacher->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
@@ -115,6 +115,8 @@
                                     </tr>
 
                                 </tbody>
+                                @include('backend.modals.delete',['name' => 'teacher'])
+
                             @endforeach
 
                         @else
@@ -137,37 +139,21 @@
         </div>
 
     </div>
-    @include('backend.modals.delete',['name' => 'teacher'])
 @endsection
 
 @push('scripts')
     <script>
-        // $(document).ready(() => {
-        function handleDelete(id) {
-            $('#deleteModal').modal('show')
+        $(function() {
+            $("#delModBtn").on("click", function(e) {
+                e.preventDefault();
+                $("#deleteModal").modal("show");
+                var url = $(this).attr('data-url');
+                $("#deleteForm").attr("action", url);
+            })
 
-            const form = document.getElementById('deleteTeacherForm')
-            form.action = `{{ route('teachers.destroy', $teacher->id) }}`
-        }
 
-        function deleteTeacher(el) {
-            offError()
-            // spin('addcons')
+        })
 
-            let data = new FormData(el.target)
-            let url = `{{ route('teachers.destroy', $teacher->id) }}`
-
-            goPost(url, data)
-                .then(res => {
-                    // console.log(data);
-                    // location.href = `{{ route('teachers.index') }}`
-                })
-                .catch(err => {
-                    // console.log(err);
-                    errorMsg(err)
-
-                })
-        }
 
     </script>
 @endpush
