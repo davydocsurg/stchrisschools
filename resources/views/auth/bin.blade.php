@@ -438,3 +438,47 @@
 
     </script>
 @endpush
+
+
+
+@push('scripts')
+    <script>
+        $(document).ready(() => {
+            let errors = []
+
+            $('#assignSubjectForm').submit(el => {
+                el.preventDefault();
+                assignSubject(el)
+
+            })
+        })
+
+        function assignSubject(el) {
+            offError()
+            sendReq()
+
+            let data = new FormData(el.target)
+            let url = `{{ route('store.class.assign.subject', $class->id) }}`
+
+            goPost(url, data)
+                .then(res => {
+                    // console.log(data);
+                    location.href = `{{ route('classes.index') }}`
+                })
+                .catch(err => {
+
+                    handleErr(err)
+                    errorMsg(err)
+
+                })
+        }
+
+        function errorMsg(err) {
+            $('#assignSubject').html(err.message.selected_subjects[0]);
+
+
+        }
+
+    </script>
+
+@endpush

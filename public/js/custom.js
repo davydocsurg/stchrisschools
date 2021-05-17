@@ -148,6 +148,13 @@ function showAlert(status, message) {
     }
 }
 
+function refreshPage() {
+    $("#refresh").css("display", "inline-block");
+    setTimeout(() => {
+        location.reload();
+    }, 0500);
+}
+
 // loading...
 function sendReq() {
     $(".spinner-border").css("display", "inline-block");

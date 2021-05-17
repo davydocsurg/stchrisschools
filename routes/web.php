@@ -50,5 +50,8 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::resource('classes', 'GradeController');
     // subject management
     Route::resource('subjects', 'SubjectController');
+    // assign subjects
+    Route::get('assign-subject-to-class/{id}', 'GradeController@assignSubjectToGrade')->name('class.assign.subject');
+    Route::post('assign-subject-to-class/{id}', 'GradeController@storeAssignedSubject')->name('store.class.assign.subject');
 
 });

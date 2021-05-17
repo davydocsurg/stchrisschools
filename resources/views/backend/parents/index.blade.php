@@ -40,7 +40,10 @@
             <div class="card">
                 <div class="card-header row">
                     <div class=" col-md-6 col-sm-12">
-                        <h3 class="card-title">Parents' Table</h3>
+                        <a class="btn btn-info" onclick="refreshPage()">
+                            Refresh <i class="spinner-border spinner-border-sm mb-1 " id="refresh"
+                                style="display: none"></i>
+                        </a>
                     </div>
 
                     <div class="card-tools col-md-6 col-sm-12">
@@ -100,12 +103,12 @@
                                                 <div class="col-md-6">
                                                     <a href="{{ route('parents.edit', $parent->id) }}"
                                                         class="btn btn-primary btn-sm">
-                                                        <i class="fas fa-edit"></i>
+                                                        <i class="fas fa-user-edit"></i>
                                                     </a>
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <button class="btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="ml-1 btn btn-danger btn-sm" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $parent->id }})" --}}
                                                         data-url="{{ route('parents.destroy', $parent->id) }}">
                                                         <i class="fas fa-trash-alt"></i>

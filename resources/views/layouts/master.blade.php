@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/fontawesome-free/css/all.min.css') }}">
     {{-- toastr --}}
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/toastr.min.css') }}">
+    {{-- adminlte --}}
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}">
 </head>
 
 <style>
@@ -113,6 +115,8 @@
 
     <script src="{{ asset('assets/dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
+    {{-- adminlte --}}
+    <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.min.js') }}"></script>
 
     {{-- !important --}}
     <script src="{{ asset('js/custom.js') }}"></script>

@@ -31,9 +31,9 @@ class Student extends Model
         return $this->belongsTo(Parent::class);
     }
 
-    function class ()
+    public function student_class()
     {
-        return $this->belongsTo(Grade::class, 'class_id');
+        return $this->belongsTo(Grade::class, 'student_class_id');
     }
 
     public function attendances()

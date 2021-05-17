@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     protected $fillable = [
-        'name',
+        'subject_name',
         'slug',
         'subject_code',
         'teacher_id',
-        'description',
+        'subject_description',
     ];
 
     public function teacher()

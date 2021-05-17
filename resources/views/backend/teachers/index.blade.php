@@ -40,7 +40,11 @@
             <div class="card">
                 <div class="card-header row">
                     <div class=" col-md-6 col-sm-12">
-                        <h3 class="card-title">Teachers' Table</h3>
+                        <a class="btn btn-info" onclick="refreshPage()">
+                            Refresh <i class="spinner-border spinner-border-sm mb-1 " id="refresh"
+                                style="display: none"></i>
+                        </a>
+                        {{-- <h3 class="card-title">Teachers' Table</h3> --}}
                     </div>
 
                     <div class="card-tools col-md-6 col-sm-12">
@@ -99,12 +103,12 @@
                                                 <div class="col-md-6">
                                                     <a href="{{ route('teachers.edit', $teacher->id) }}"
                                                         class="btn btn-primary btn-sm">
-                                                        <i class="fas fa-edit"></i>
+                                                        <i class="fas fa-user-edit"></i>
                                                     </a>
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <button class="btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="ml-1 btn btn-danger btn-sm" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $teacher->id }})" --}}
                                                         data-url="{{ route('teachers.destroy', $teacher->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
@@ -151,9 +155,21 @@
                 $("#deleteForm").attr("action", url);
             })
 
+            $("#refreshTeachers").on("click", function(e) {
+                e.preventDefault();
+            })
+
 
         })
 
+        // function fetchTeachers() {
+        //     offError()
+        //     sendReq()
+
+        //     let url = `{{ route('teachers.index') }}`
+
+        //     goGet(url)
+        // }
 
     </script>
 @endpush

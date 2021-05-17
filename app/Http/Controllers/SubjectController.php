@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class SubjectController extends Controller
 {
@@ -26,7 +29,9 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $teachers = Teacher::latest()->get();
+
+        return view('backend.subjects.create', compact('teachers'));
     }
 
     /**
@@ -37,7 +42,44 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // Get validation rules
+        $validate = $this->create_subject_rules($request);
+
+        // Run validation
+        if ($validate->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validate->errors(),
+                'status' => 400,
+            ]);
+        }
+
+        Subject::create([
+            'subject_name' => $request->subject_name,
+            'slug' => Str::slug($request->subject_name),
+            'subject_code' => $request->subject_code,
+            'teacher_id' => $request->teacher_id,
+            'subject_description' => $request->subject_description,
+        ]);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  request  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function create_subject_rules(Request $request)
+    {
+        // Make and return validation rules
+        return Validator::make($request->all(), [
+            'subject_name' => 'required|string|max:255|unique:subjects,subject_name',
+            'subject_description' => 'required|string|max:255|unique:subjects',
+            'subject_code' => 'required|numeric',
+            'teacher_id' => 'required|numeric',
+
+        ]);
     }
 
     /**
@@ -57,9 +99,11 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        //
+        $teachers = Teacher::latest()->get();
+
+        return view('backend.subjects.edit', compact('subject', 'teachers'));
     }
 
     /**
@@ -69,9 +113,22 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject)
     {
-        //
+        $request->validate([
+            'subject_name' => 'required|string|max:255|unique:subjects,subject_name,' . $subject->id,
+            'subject_code' => 'required|numeric',
+            'teacher_id' => 'required|numeric',
+            'subject_description' => 'required|string|max:255',
+        ]);
+
+        $subject->update([
+            'subject_name' => $request->subject_name,
+            'slug' => Str::slug($request->subject_name),
+            'subject_code' => $request->subject_code,
+            'teacher_id' => $request->teacher_id,
+            'subject_description' => $request->subject_description,
+        ]);
     }
 
     /**
@@ -80,8 +137,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+        return back();
     }
 }
