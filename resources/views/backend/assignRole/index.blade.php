@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Manage Classes
+    Manage & Assign Roles
 @endsection
 
 <style>
@@ -18,12 +18,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Classes</h1>
+                    <h1 class="m-0">Manage & Assign Roles</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('classes.create') }}" class="btn btn-outline-success">
-                            Create Classes <i class="fas fa-th-list"></i>
+                        <a href="{{ route('assign_roles.create') }}" class="btn btn-outline-success">
+                            Create & Assign Roles <i class="fas fa-user-tag"></i>
                         </a>
                         {{-- <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Teachers</li> --}}
@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class=" col-md-6 col-sm-12">
-                        {{-- <h3 class="card-title">Classes' Table</h3> --}}
+                        {{-- <h3 class="card-title">Roles' Table</h3> --}}
                         <a class="btn btn-info" onclick="refreshPage()">
                             Refresh <i class="spinner-border spinner-border-sm mb-1 " id="refresh"
                                 style="display: none"></i>
@@ -61,85 +61,80 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    @if ($classes->count() > 0)
+                    @if ($users->count() > 0)
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Profile Picture</th>
                                     <th>Name</th>
-                                    <th>Students</th>
-                                    <th>Teacher</th>
-                                    <th>Subject Code</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
                                     <th>Registered At</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            @foreach ($classes as $class)
+                            @foreach ($users as $user)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $class->class_numeric }}</td>
+                                        <td>{{ $user->id }}</td>
 
-                                        <td>{{ $class->class_name }}</td>
                                         <td>
-                                            <span class="badge badge-info badge-sm">
-                                                {{ $class->students_count }}
-                                            </span>
+                                            <div class="image">
+                                                <img src="{{ url('storage/users/profile/' . $user->profile_picture) }}"
+                                                    class="img-circle elevation-2" alt="{{ $user->first_name }}"
+                                                    width="35">
+                                            </div>
                                         </td>
 
-                                        <td>
-                                            {{ $class->teacher->user->first_name . ' ' . $class->teacher->user->last_name ?? 'No Teacher Assigned' }}
-                                        </td>
+                                        <td>{{ $user->first_name . ' ' . $user->last_name }}</td>
 
                                         <td>
-                                            @foreach ($class->subjects as $subject)
+                                            {{ $user->email }}
+                                        </td>
+
+                                        @foreach ($user->roles as $role)
+                                            <td>
                                                 <span class="badge badge-info badge-sm">
-                                                    {{ $subject->subject_code ?? 'No Subjects' }}
+                                                    {{ $role->name }}
                                                 </span>
-                                            @endforeach
-                                        </td>
+                                            </td>
+                                        @endforeach
 
-                                        <td>{{ $class->created_at }}</td>
+                                        <td>{{ $user->created_at }}</td>
 
                                         <td>
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('classes.edit', $class->id) }}"
+                                                <div class="col-md-6">
+                                                    <a href="{{ route('assign_roles.edit', $user->id) }}"
                                                         class="btn btn-primary btn-sm">
-                                                        <i class="fas fa-edit"></i>
+                                                        <i class="fas fa-user-edit"></i>
                                                     </a>
                                                 </div>
 
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('class.assign.subject', $class->id) }}"
-                                                        class="btn btn-warning btn-sm">
-                                                        <i class="fas fa-list-ol"></i>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-md-4">
+                                                {{-- <div class="col-md-6">
                                                     <button class="btn btn-danger btn-sm delModBtn" id="delModBtn"
-                                                        {{-- onclick="handleDelete({{ $class->id }})" --}}
-                                                        data-url="{{ route('classes.destroy', $class->id) }}">
+                                                        data-url="{{ route('assign_roles.destroy', $user->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </td>
                                     </tr>
 
                                 </tbody>
-                                @include('backend.modals.delete',['name' => 'class'])
+                                {{-- @include('backend.modals.delete',['name' => 'User']) --}}
 
                             @endforeach
 
                         @else
                             <div class="p-5 text-center">
                                 <h6 class="display-4 text-dark ">
-                                    No Classes found
+                                    No Users/Roles found
                                 </h6>
 
-                                <a href="{{ route('classes.create') }}" class="btn btn-outline-success">
-                                    Create Classes <i class="fas fa-th-list"></i>
+                                <a href="{{ route('roles.create') }}" class="btn btn-outline-success">
+                                    Create & Assign Roles <i class="fas fa-th-list"></i>
                                 </a>
                             </div>
 
@@ -147,6 +142,14 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
+
+                <!-- card-footer -->
+                <div class="card-footer">
+                    {{ $users->links() }}
+
+                </div>
+                <!-- /.card-footer -->
+
             </div>
             <!-- /.card -->
         </div>

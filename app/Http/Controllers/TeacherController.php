@@ -329,8 +329,14 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        // dd($teacher->user_id);
         $user = User::findOrFail($teacher->user_id);
+        // check if teacher has classes
+        if ($teacher->classes->count() > 0) {
+            session()->flash('teacher-class-warning', 'Teacher can\'t be deleted because he/she\'s assigned to class[es].');
+
+            return back();
+        }
+        // dd($teacher->user_id);
 
         $user->removeRole('Teacher');
 

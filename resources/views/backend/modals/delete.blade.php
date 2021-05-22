@@ -6,7 +6,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-danger">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete Teacher</h5><button
+                    <h5 class="modal-title" id="deleteModalLabel">Delete {{ $name }}</h5><button
                         class="close btn btn-default text-white" type="button" data-dismiss="modal"
                         aria-label="Close"><span class="font-weight-light" aria-hidden="true">&times;</span></button>
                 </div>

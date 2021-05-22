@@ -109,6 +109,28 @@
                         </p>
                     </a>
                 </li>
+
+                {{-- roles --}}
+                <li class="nav-item">
+                    <a href="{{ route('assign_roles.index') }}"
+                        class="nav-link {{ request()->routeIs('assign_roles*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-tag"></i>
+                        <p>
+                            Assign Roles
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('roles-permissions.index') }}"
+                        class="nav-link {{ request()->routeIs('roles-permissions.index*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            Roles & Permissions
+                        </p>
+                    </a>
+                </li>
+
                 @endrole
 
 

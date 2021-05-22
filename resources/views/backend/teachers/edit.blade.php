@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Teacher
+    Edit Teacher - {{ $teacher->user->first_name . ' ' . $teacher->user->last_name }}
 @endsection
 
 <style>

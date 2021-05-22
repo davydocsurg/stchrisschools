@@ -112,7 +112,7 @@ class ParentsController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Parent\'s Created Successful',
+                'message' => 'Parent Created Successfully',
                 'status' => 200,
             ]);
         } catch (\Throwable $th) {

@@ -53,5 +53,21 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     // assign subjects
     Route::get('assign-subject-to-class/{id}', 'GradeController@assignSubjectToGrade')->name('class.assign.subject');
     Route::post('assign-subject-to-class/{id}', 'GradeController@storeAssignedSubject')->name('store.class.assign.subject');
+    // roles & users management
+    Route::resource('assign_roles', 'AssignRoleController');
+    /**
+     * roles and permissions management
+     * */
+    // roles
+    Route::get('/roles_and_permissions', 'RolePermissionController@getRolesPermissions')->name('roles-permissions.index');
+    Route::get('/create-role', 'RolePermissionController@createRole')->name('role.create');
+    Route::post('/store-role', 'RolePermissionController@storeRole')->name('role.store');
+    Route::get('/edit-role/{id}', 'RolePermissionController@editRole')->name('role.edit');
+    Route::put('/update-role/{id}', 'RolePermissionController@updateRole')->name('role.update');
 
+    // permissions
+    Route::get('/create-permission', 'RolePermissionController@createPermission')->name('permission.create');
+    Route::post('/store-permission', 'RolePermissionController@storePermission')->name('permission.store');
+    Route::get('/edit-permission/{id}', 'RolePermissionController@editPermission')->name('permission.edit');
+    Route::put('/update-permission/{id}', 'RolePermissionController@updatePermission')->name('permission.update');
 });

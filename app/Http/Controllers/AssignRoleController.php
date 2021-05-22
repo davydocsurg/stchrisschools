@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Grade;
-use App\Parents;
-use App\Student;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
-class StudentController extends Controller
+class AssignRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +18,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with('student_class')->latest()->paginate(10);
+        $users = User::with('roles')->latest()->paginate(10);
 
-        return view('backend.students.index', compact('students'));
+        return view('backend.assignRole.index', compact('users'));
     }
 
     /**
@@ -34,10 +30,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classes = Grade::latest()->get();
-        $parents = Parents::with('user')->latest()->get();
+        $roles = Role::latest()->get();
 
-        return view('backend.students.create', compact('classes', 'parents'));
+        return view('backend.assignRole.create', compact('roles'));
     }
 
     /**
@@ -49,8 +44,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        // Get validation rules
-        $validate = $this->create_student_rules($request);
+
+        // get Validation rules
+        $validate = $this->create_user_rules($request);
 
         // Run validation
         if ($validate->fails()) {
@@ -65,11 +61,12 @@ class StudentController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         if ($request->hasFile('profile_picture')) {
-            // $old = $user->profile_picture;
+            $old = $user->profile_picture;
+
             // validate photo
             $validateph = $this->profile_pics_rules($request);
 
@@ -86,6 +83,7 @@ class StudentController extends Controller
             $photo = basename($upload);
 
             $user->profile_picture = $photo;
+            $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
 
             if (!$upload) {
                 Storage::delete('/public/users/profile' . $photo);
@@ -101,27 +99,15 @@ class StudentController extends Controller
             $photo = $user->profile_picture;
         }
 
-        $user->student()->create([
-            'gender' => $request->gender,
-            'student_phone' => $request->student_phone,
-            'roll_number' => $request->roll_number,
-            'parent_id' => $request->parent_id,
-            'class_id' => $request->class_id,
-            'date_of_birth' => $request->date_of_birth,
-            'current_address' => $request->current_address,
-            'permanent_address' => $request->permanent_address,
-        ]);
-
-        $user->assignRole('Student');
+        $user->assignRole($request->role);
 
         // Try user save or catch error if any
         try {
             $user->save();
-            // $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
 
             return response()->json([
                 'success' => true,
-                'message' => 'Student Created Successful',
+                'message' => 'Parent Updated Successful',
                 'status' => 200,
             ]);
         } catch (\Throwable $th) {
@@ -139,28 +125,15 @@ class StudentController extends Controller
      * @param  request  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create_student_rules(Request $request)
+    public function create_user_rules(Request $request)
     {
         // Make and return validation rules
         return Validator::make($request->all(), [
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:255|unique:users',
-            'parent_id' => 'required|numeric',
-            'class_id' => 'required|numeric',
-            'roll_number' => [
-                'required',
-                'numeric',
-                Rule::unique('students')->where(function ($query) use ($request) {
-                    return $query->where('class_id', $request->class_id);
-                }),
-            ],
-            'password' => 'required|string|min:8|confirmed',
-            'gender' => 'required|string',
-            'student_phone' => 'required|numeric|digits_between:5,11|unique:parents,parent_phone',
-            'date_of_birth' => 'required|date',
-            'current_address' => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255',
+            'email' => 'required|email|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+
         ]);
     }
 
@@ -195,12 +168,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        $classes = Grade::latest()->get();
-        $parents = Parents::with('user')->latest()->get();
+        $user = User::with('roles')->findOrFail($id);
+        $roles = Role::latest()->get();
 
-        return view('backend.students.edit', compact('classes', 'parents', 'student'));
+        return view('backend.assignRole.edit', compact('user', 'roles'));
     }
 
     /**
@@ -210,34 +183,23 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        // validate request
         $request->validate([
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->user_id,
-            'parent_id' => 'required|numeric',
-            'class_id' => 'required|numeric',
-            'roll_number' => [
-                'required',
-                'numeric',
-                Rule::unique('students')->ignore($student->id)->where(function ($query) use ($request) {
-                    return $query->where('class_id', $request->class_id);
-                }),
-            ],
-            // 'password' => 'required|string|min:8|confirmed',
-            'gender' => 'required|string',
-            'student_phone' => 'required|numeric|digits_between:5,11|unique:parents,parent_phone',
-            'date_of_birth' => 'required|date',
-            'current_address' => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
         ]);
 
-        $user = User::findOrFail($student->user_id);
+        $user = User::findOrFail($id);
+
+        if ($request->password) {
+            $user->password = $request->password;
+        }
 
         if ($request->hasFile('profile_picture')) {
-            // $old = $user->profile_picture;
+            $old = $user->profile_picture;
+
             // validate photo
             $validateph = $this->profile_pics_rules($request);
 
@@ -254,6 +216,7 @@ class StudentController extends Controller
             $photo = basename($upload);
 
             $user->profile_picture = $photo;
+            $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
 
             if (!$upload) {
                 Storage::delete('/public/users/profile' . $photo);
@@ -269,32 +232,21 @@ class StudentController extends Controller
             $photo = $user->profile_picture;
         }
 
-        $student->user()->update([
+        $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
-            // 'password' => Hash::make($request->password),
         ]);
 
-        $student->update([
-            'gender' => $request->gender,
-            'student_phone' => $request->student_phone,
-            'roll_number' => $request->roll_number,
-            'parent_id' => $request->parent_id,
-            'class_id' => $request->class_id,
-            'date_of_birth' => $request->date_of_birth,
-            'current_address' => $request->current_address,
-            'permanent_address' => $request->permanent_address,
-        ]);
+        $user->syncRoles($request->selectedRole);
 
         // Try user save or catch error if any
         try {
             $user->save();
-            // $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
 
             return response()->json([
                 'success' => true,
-                'message' => 'Student Updated Successful',
+                'message' => 'Parent Updated Successful',
                 'status' => 200,
             ]);
         } catch (\Throwable $th) {
@@ -311,19 +263,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(User $user, $id)
     {
-        $user = User::findOrFail($student->user_id);
+        dd($user->id);
+        // $user = User::with('roles')->findOrFail($id);
+        // // $user = User::findOrFail($user->id);
+        // $user->removeRole($user->role);
 
-        $user->removeRole('Student');
+        // $photo = $user->profile_picture;
+        // $photo != 'avatar.png' ? Storage::delete('/public/users/profile/' . $photo) : null;
+        // $user->delete();
 
-        if ($user->delete()) {
-            $photo = $student->profile_picture;
-            $photo != 'avatar.png' ? Storage::delete('/public/users/profile/' . $photo) : null;
+        // return back();
 
-        }
-        $user->student()->delete();
-
-        return back();
     }
 }

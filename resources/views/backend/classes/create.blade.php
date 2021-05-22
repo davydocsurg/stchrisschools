@@ -55,7 +55,7 @@
                                     <label for="class name">Class Name<code>*</code></label>
                                     <input type="text" class="form-control form-control-border" id="className"
                                         name="class_name" placeholder="Class Name" required>
-                                    <span class="text-danger" id="className"></span>
+                                    <span class="text-danger" id="classNameError"></span>
                                 </div>
 
                             </div>
@@ -65,7 +65,7 @@
                                     <label for="class number">Class Numeric<code>*</code></label>
                                     <input type="number" class="form-control form-control-border" id="classNumeric"
                                         name="class_numeric" placeholder="Class Numeric" required>
-                                    <span class="text-danger" id="classNumeric"></span>
+                                    <span class="text-danger" id="classNumericError"></span>
 
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
 
                                     </select>
 
-                                    <span class="text-danger" id="selectTeacher"></span>
+                                    <span class="text-danger" id="selectTeacherError"></span>
                                 </div>
                             </div>
 
@@ -100,7 +100,7 @@
                                     <input type="text" name="class_description" class="form-control form-control-border"
                                         id="">
 
-                                    <span class="text-danger" id="classDescription"></span>
+                                    <span class="text-danger" id="classDescriptionError"></span>
 
                                 </div>
                             </div>
@@ -144,7 +144,6 @@
 
             goPost(url, data)
                 .then(res => {
-                    // console.log(data);
                     location.href = `{{ route('classes.index') }}`
                 })
                 .catch(err => {
@@ -156,10 +155,10 @@
         }
 
         function errorMsg(err) {
-            $('#className').html(err.message.class_name[0]);
-            $('#classNumeric').html(err.message.class_numeric[0]);
-            $('#selectTeacher').html(err.message.teacher_id[0]);
-            $('#classDescription').html(err.message.class_description[0]);
+            $('#classNameError').html(err.message.class_name[0]);
+            $('#classNumericError').html(err.message.class_numeric[0]);
+            $('#selectTeacherError').html(err.message.teacher_id[0]);
+            $('#classDescriptionError').html(err.message.class_description[0]);
 
         }
 

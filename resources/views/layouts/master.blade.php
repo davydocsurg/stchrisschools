@@ -116,12 +116,20 @@
     <script src="{{ asset('assets/dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
     {{-- adminlte --}}
-    <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/dashboard/js/adminlte/js/adminlte.min.js') }}"></script> --}}
 
     {{-- !important --}}
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
+
+    {{-- toast errors --}}
+    <script>
+        @if (session()->has('teacher-class-warning'))
+            toastr.warning('{{ session()->get('teacher-class-warning') }}')
+        @endif
+
+    </script>
 
 </body>
 

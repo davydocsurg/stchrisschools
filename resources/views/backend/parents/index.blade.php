@@ -69,7 +69,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    {{-- <th>Children</th> --}}
+                                    <th>Children</th>
                                     <th>D.O.B</th>
                                     <th>Current Address</th>
                                     <th>Permanent Address</th>
@@ -81,9 +81,8 @@
                             @foreach ($parents as $parent)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $parent->user->id }}</td>
+                                        <td>{{ $parent->id }}</td>
                                         <td>
-                                            {{-- <img src="{{ url($parent->user->profile_picture) }}" --}}
                                             <div class="image">
                                                 <img src="{{ url('storage/users/profile/' . $parent->user->profile_picture) }}"
                                                     class="img-circle elevation-2" alt="{{ $parent->user->first_name }}"
@@ -93,6 +92,13 @@
                                         <td>{{ $parent->user->first_name . ' ' . $parent->user->last_name }}</td>
                                         <td>{{ $parent->user->email }}</td>
                                         <td>{{ $parent->parent_phone }}</td>
+                                        <td>
+                                            @foreach ($parent->children as $children)
+                                                <span class="badge badge-info badge-sm">
+                                                    {{ $children->user->first_name . ' ' . $children->user->last_name }}
+                                                </span>
+                                            @endforeach
+                                        </td>
                                         <td>{{ $parent->date_of_birth }}</td>
                                         <td>{{ $parent->current_address }}</td>
                                         <td>{{ $parent->permanent_address }}</td>
@@ -108,7 +114,7 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <button class="ml-1 btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="ml-1 btn btn-danger btn-sm delModBtn" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $parent->id }})" --}}
                                                         data-url="{{ route('parents.destroy', $parent->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
@@ -148,7 +154,7 @@
 @push('scripts')
     <script>
         $(function() {
-            $("#delModBtn").on("click", function(e) {
+            $(".delModBtn").on("click", function(e) {
                 e.preventDefault();
                 $("#deleteModal").modal("show");
                 var url = $(this).attr('data-url');

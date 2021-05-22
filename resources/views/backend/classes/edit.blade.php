@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Update Classes
+    Update Classes - {{ $class->class_name }}
 @endsection
 
 <style>

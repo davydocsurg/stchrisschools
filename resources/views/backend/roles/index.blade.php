@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Manage Classes
+    Manage Roles & Permissions
 @endsection
 
 <style>
@@ -18,15 +18,19 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Classes</h1>
+                    <h1 class="m-0"> Manage Roles & Permissions</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('classes.create') }}" class="btn btn-outline-success">
-                            Create Classes <i class="fas fa-th-list"></i>
+                        <a href="{{ route('role.create') }}" class="btn btn-outline-success" data-toggle="tooltip"
+                            data-placement="top" title="Create New Roles">
+                            <i class="fas fa-folder-plus"></i> Roles
                         </a>
-                        {{-- <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Teachers</li> --}}
+
+                        <a href="{{ route('permission.create') }}" class="ml-3 btn btn-outline-success"
+                            data-toggle="tooltip" data-placement="top" title="Create New Permissions">
+                            <i class="fas fa-folder-plus"></i> Permissions
+                        </a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -61,85 +65,57 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    @if ($classes->count() > 0)
+                    @if ($roles->count() > 0)
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Students</th>
-                                    <th>Teacher</th>
+                                    <th>Roles</th>
+                                    <th>Permissions</th>
+                                    {{-- <th>Teacher</th>
                                     <th>Subject Code</th>
-                                    <th>Registered At</th>
+                                    <th>Registered At</th> --}}
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            @foreach ($classes as $class)
+                            @foreach ($roles as $role)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $class->class_numeric }}</td>
+                                        <td>{{ $role->id }}</td>
 
-                                        <td>{{ $class->class_name }}</td>
+                                        <td>{{ $role->name }}</td>
                                         <td>
-                                            <span class="badge badge-info badge-sm">
-                                                {{ $class->students_count }}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            {{ $class->teacher->user->first_name . ' ' . $class->teacher->user->last_name ?? 'No Teacher Assigned' }}
-                                        </td>
-
-                                        <td>
-                                            @foreach ($class->subjects as $subject)
+                                            @foreach ($role->permissions as $permission)
                                                 <span class="badge badge-info badge-sm">
-                                                    {{ $subject->subject_code ?? 'No Subjects' }}
+                                                    {{ $permission->name ?? 'No Permissions' }}
                                                 </span>
                                             @endforeach
                                         </td>
 
-                                        <td>{{ $class->created_at }}</td>
-
                                         <td>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('classes.edit', $class->id) }}"
-                                                        class="btn btn-primary btn-sm">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <a href="{{ route('class.assign.subject', $class->id) }}"
-                                                        class="btn btn-warning btn-sm">
-                                                        <i class="fas fa-list-ol"></i>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <button class="btn btn-danger btn-sm delModBtn" id="delModBtn"
-                                                        {{-- onclick="handleDelete({{ $class->id }})" --}}
-                                                        data-url="{{ route('classes.destroy', $class->id) }}">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
+                                            <div class="col-md-4">
+                                                <a href="{{ route('role.edit', $role->id) }}"
+                                                    class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                                    data-placement="top" title="Edit Role">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
 
                                 </tbody>
-                                @include('backend.modals.delete',['name' => 'class'])
+                                {{-- @include('backend.modals.delete',['name' => 'class']) --}}
 
                             @endforeach
 
                         @else
                             <div class="p-5 text-center">
                                 <h6 class="display-4 text-dark ">
-                                    No Classes found
+                                    No Roles found
                                 </h6>
 
-                                <a href="{{ route('classes.create') }}" class="btn btn-outline-success">
-                                    Create Classes <i class="fas fa-th-list"></i>
+                                <a href="{{ route('role.create') }}" class="btn btn-outline-success">
+                                    Create Roles <i class="fas fa-user-tag"></i>
                                 </a>
                             </div>
 

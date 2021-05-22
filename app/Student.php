@@ -10,7 +10,7 @@ class Student extends Model
     protected $fillable = [
         'user_id',
         'parent_id',
-        'student_class_id',
+        'class_id',
         'roll_number',
         'gender',
         'student_phone',
@@ -33,7 +33,7 @@ class Student extends Model
 
     public function student_class()
     {
-        return $this->belongsTo(Grade::class, 'student_class_id');
+        return $this->belongsTo(Grade::class, 'class_id');
     }
 
     public function attendances()

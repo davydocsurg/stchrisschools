@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Parent
+    Edit Parent - {{ $parent->user->first_name . ' ' . $parent->user->last_name }}
 @endsection
 
 <style>

@@ -74,14 +74,14 @@
                                     <th>Current Address</th>
                                     <th>Permanent Address</th> --}}
                                     <th>Registered At</th>
-                                    <th>Status</th>
+                                    {{-- <th>Status</th> --}}
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             @foreach ($students as $student)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $student->user->id }}</td>
+                                        <td>{{ $student->id }}</td>
                                         <td>
                                             <div class="image">
                                                 <img src="{{ url('storage/users/profile/' . $student->user->profile_picture) }}"
@@ -96,7 +96,7 @@
                                         <td>{{ $student->current_address }}</td>
                                         <td>{{ $student->permanent_address }}</td> --}}
                                         <td>{{ $student->created_at }}</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
+                                        {{-- <td><span class="tag tag-success">Approved</span></td> --}}
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -107,7 +107,7 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <button class="ml-1 btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="ml-1 btn btn-danger btn-sm delModBtn" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $student->id }})" --}}
                                                         data-url="{{ route('students.destroy', $student->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
@@ -147,7 +147,7 @@
 @push('scripts')
     <script>
         $(function() {
-            $("#delModBtn").on("click", function(e) {
+            $(".delModBtn").on("click", function(e) {
                 e.preventDefault();
                 $("#deleteModal").modal("show");
                 var url = $(this).attr('data-url');

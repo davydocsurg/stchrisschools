@@ -6,6 +6,7 @@ use App\Parents;
 use App\Student;
 use App\Teacher;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
             $parents = Parents::latest()->get();
             $teachers = Teacher::latest()->get();
             $students = Student::latest()->get();
+            $roles = Role::latest()->get();
 
             return view('dashboard', compact('parents', 'teachers', 'students'));
 

@@ -120,7 +120,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="Class">Assign Class</label>
-                                    <select name="student_class_id" class="form-control select2 select2-hidden-accessible"
+                                    <select name="class_id" class="form-control select2 select2-hidden-accessible"
                                         style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                         <option value="">--Select Class--</option>
                                         @foreach ($classes as $class)

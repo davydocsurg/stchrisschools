@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Update Students
+    Edit Student - {{ $student->user->first_name . ' ' . $student->user->last_name }}
 @endsection
 
 <style>
@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Update Students</h1>
+                    <h1 class="m-0">Edit Student - {{ $student->user->first_name . ' ' . $student->user->last_name }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -47,6 +47,12 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <div class="image text-center mb-3">
+                        <img src="{{ url('storage/users/profile/' . $student->user->profile_picture) }}"
+                            class="img-circle elevation-2" width="120"
+                            alt="{{ $student->user->first_name . ' ' . $student->user->last_name }}">
+                    </div>
+
                     <form method="post" id="updateStudentForm">
                         @csrf
                         @method('PUT')
@@ -125,12 +131,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="Class">Assign Class</label>
-                                    <select name="student_class_id" class="form-control select2 select2-hidden-accessible"
+                                    <select name="class_id" class="form-control select2 select2-hidden-accessible"
                                         style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                         <option value="">--Select Class--</option>
                                         @foreach ($classes as $class)
                                             <option value="{{ $class->id }}"
-                                                {{ $class->id === $student->student_class_id ? 'selected' : '' }}>
+                                                {{ $class->id === $student->class_id ? 'selected' : '' }}>
                                                 {{ $class->class_name }}
                                             </option>
                                         @endforeach

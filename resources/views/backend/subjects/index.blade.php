@@ -105,7 +105,7 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <button class="btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="btn btn-danger btn-sm delModBtn" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $subject->id }})" --}}
                                                         data-url="{{ route('subjects.destroy', $subject->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
@@ -145,7 +145,7 @@
 @push('scripts')
     <script>
         $(function() {
-            $("#delModBtn").on("click", function(e) {
+            $(".delModBtn").on("click", function(e) {
                 e.preventDefault();
                 $("#deleteModal").modal("show");
                 var url = $(this).attr('data-url');

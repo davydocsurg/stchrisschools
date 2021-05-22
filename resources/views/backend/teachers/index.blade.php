@@ -81,7 +81,7 @@
                             @foreach ($teachers as $teacher)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $teacher->user->id }}</td>
+                                        <td>{{ $teacher->id }}</td>
                                         <td>
                                             {{-- <img src="{{ url($teacher->user->profile_picture) }}" --}}
                                             <div class="image">
@@ -108,7 +108,7 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <button class="ml-1 btn btn-danger btn-sm" id="delModBtn"
+                                                    <button class="ml-1 btn btn-danger btn-sm delModBtn" id="delModBtn"
                                                         {{-- onclick="handleDelete({{ $teacher->id }})" --}}
                                                         data-url="{{ route('teachers.destroy', $teacher->id) }}">
                                                         <i class="fas fa-trash-alt"></i>
@@ -148,7 +148,7 @@
 @push('scripts')
     <script>
         $(function() {
-            $("#delModBtn").on("click", function(e) {
+            $(".delModBtn").on("click", function(e) {
                 e.preventDefault();
                 $("#deleteModal").modal("show");
                 var url = $(this).attr('data-url');

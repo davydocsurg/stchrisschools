@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Update Subjects
+    Edit Subject - {{ $subject->subject_name }}
 @endsection
 
 <style>
@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Update Subjects</h1>
+                    <h1 class="m-0">Edit Subject - {{ $subject->subject_name }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class=" col-md-6 col-sm-12">
-                        <h3 class="card-title">Update subjects</h3>
+                        <h3 class="card-title">Edit Subject</h3>
                     </div>
                 </div>
                 <!-- /.card-header -->
