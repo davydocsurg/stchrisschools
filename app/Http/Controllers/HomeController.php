@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use App\Parents;
 use App\Student;
 use App\Teacher;
@@ -36,13 +37,14 @@ class HomeController extends Controller
             $students = Student::latest()->get();
             $roles = Role::latest()->get();
 
-            return view('dashboard', compact('parents', 'teachers', 'students'));
+            return view('dashboard', compact('parents', 'teachers', 'students', 'roles'));
 
         } elseif ($user->hasRole('Teacher')) {
 
             $teacher = Teacher::with(['user', 'subjects', 'classes', 'students'])->withCount('subjects', 'classes')->findOrFail($user->teacher->id);
+            $lessons = Lesson::with(['teacher'])->latest()->get();
 
-            return view('dashboard', compact('teacher'));
+            return view('dashboard', compact('teacher', 'lessons'));
 
         } elseif ($user->hasRole('Parent')) {
 

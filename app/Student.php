@@ -31,6 +31,7 @@ class Student extends Model
         return $this->belongsTo(Parent::class);
     }
 
+    // student:class relationship
     public function student_class()
     {
         return $this->belongsTo(Grade::class, 'class_id');

@@ -35,4 +35,9 @@ class Teacher extends Model
     {
         return $this->classes()->withCount('students');
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

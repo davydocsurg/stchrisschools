@@ -71,3 +71,10 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
     Route::get('/edit-permission/{id}', 'RolePermissionController@editPermission')->name('permission.edit');
     Route::put('/update-permission/{id}', 'RolePermissionController@updatePermission')->name('permission.update');
 });
+
+/** teacher routes */
+Route::group(['middleware' => ['auth', 'role:Teacher']], function () {
+    // lessons management
+    Route::resource('lessons', 'LessonController');
+    Route::resource('assigned_classes', 'TeacherClassController');
+});

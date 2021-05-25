@@ -109,7 +109,7 @@ class TeacherController extends Controller
 
             $user->assignRole('Teacher');
 
-            // Try user save or catch error if any
+            // Try teacher save or catch error if any
             try {
                 $user->save();
                 // $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;

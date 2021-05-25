@@ -133,6 +133,28 @@
 
                 @endrole
 
+                @role('Teacher')
+                <li class="nav-item">
+                    <a href="{{ route('lessons.index') }}"
+                        class="nav-link {{ request()->routeIs('lessons*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Lessons
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('assigned_classes.index') }}"
+                        class="nav-link {{ request()->routeIs('assigned_classes*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                            Classes
+                        </p>
+                    </a>
+                </li>
+                @endrole
+
 
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">

@@ -30,7 +30,12 @@
 @endsection
 
 @section('content')
+    {{-- Admin --}}
     @role('Admin')
     @include('dashboard.admin')
+    @endrole
+    {{-- Teachers --}}
+    @role('Teacher')
+    @include('dashboard.teacher')
     @endrole
 @endsection
