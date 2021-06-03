@@ -11,7 +11,7 @@
     <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
     {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}"> --}}
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
@@ -127,6 +127,18 @@
     <script>
         @if (session()->has('teacher-class-warning'))
             toastr.warning('{{ session()->get('teacher-class-warning') }}')
+        @endif
+
+        @if (session()->has('current-password-mismatch'))
+            toastr.error('{{ session()->get('current-password-mismatch') }}')
+        @endif
+
+        @if (session()->has('new-password-fail'))
+            toastr.error('{{ session()->get('new-password-fail') }}')
+        @endif
+
+        @if (session()->has('password-success'))
+            toastr.success('{{ session()->get('password-success') }}')
         @endif
 
     </script>

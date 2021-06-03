@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +34,9 @@ Route::post('/parent_signup', [RegisterController::class, 'signUpAsParent'])->na
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-// Route::post('/sign-up', 'RegisterController@adminSignup')->name('adminSignup');
-Route::post('create_teacher', [TeacherController::class, 'create_teacher'])->name('create_teacher');
+Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::put('/profile/update', 'HomeController@updateProfile')->name('profile.update');
+Route::post('/password/change', 'HomeController@changePassword')->name('password.change');
 
 /** admin routes */
 Route::group(['middleware' => ['auth', 'role:Admin']], function () {

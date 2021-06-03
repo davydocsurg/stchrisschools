@@ -6,7 +6,7 @@
     <nav class="main-header navbar navbar-expand navbar-info navbar-light">
         @endrole
 
-        @role('Student')
+        @role('Parent')
         <nav class="main-header navbar navbar-expand navbar-secondary navbar-light">
             @endrole
 
@@ -59,16 +59,17 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <div class="image">
-                                <img src="{{ asset(Auth::user()->profile_picture) }}" class="img-circle elevation-2"
+                                <img src="{{ url('storage/users/profile/' . Auth::user()->profile_picture) }}"
+                                    class="img-circle elevation-2"
                                     alt="{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}" width="25">
-                                {{-- <span>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</span> --}}
                             </div>
+                            {{-- <span>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</span> --}}
                             {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-item dropdown-header">Manage Your Profile</span>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item text-center">
+                            <a href="{{ route('profile') }}" class="dropdown-item text-center">
                                 <i class="fas fa-user-edit mr-2"></i> My Profile
                             </a>
                             <div class="dropdown-divider"></div>

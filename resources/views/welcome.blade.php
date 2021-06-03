@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}">
+
     <style>
         html,
         body {
@@ -86,6 +88,16 @@
         <div class="content">
             <div class="title m-b-md">
                 Laravel
+            </div>
+
+            <div class="position-relative p-3 bg-gray" style="height: 180px">
+                <div class="ribbon-wrapper ribbon-lg">
+                    <div class="ribbon bg-success text-lg">
+                        Ribbon
+                    </div>
+                </div>
+                Ribbon Large <br> with Large Text <br>
+                <small>.ribbon-wrapper.ribbon-lg .ribbon.text-lg</small>
             </div>
 
             <div class="links">

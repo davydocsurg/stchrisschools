@@ -11,11 +11,13 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset(Auth::user()->profile_picture) }}" class="img-circle elevation-2"
+                <img src="{{ url('storage/users/profile/' . Auth::user()->profile_picture) }}"
+                    class="img-circle elevation-2"
                     alt="{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
+                <a href="{{ route('profile') }}"
+                    class="d-block ">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
             </div>
         </div>
 

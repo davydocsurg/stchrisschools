@@ -55,12 +55,41 @@ class GradeController extends Controller
             ]);
         }
 
+        // $classes = [];
+
+        // foreach ($request->class_name as $key => $class_name) {
+        //     array_push($classes, [
+        //         'class_name' => $class_name[$key],
+        //         'class_numeric' => $request->class_numeric[$key],
+        //         'class_description' => $request->class_description[$key],
+        //         'teacher_id' => $request->teacher_id[$key],
+        //     ]);
+        // }
+
         Grade::create([
             'class_name' => $request->class_name,
             'class_numeric' => $request->class_numeric,
             'teacher_id' => $request->teacher_id,
             'class_description' => $request->class_description,
         ]);
+
+        // try {
+        //     // Grade::insert($classes);
+
+        //     return response()->json([
+        //         'success' => true,
+        //         'message' => 'Classes created successfully',
+        //         'status' => 200,
+        //     ]);
+        // } catch (\Throwable $th) {
+        //     Log::error($th);
+
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Something went wrong. Try again!',
+        //         'status' => 500,
+        //     ]);
+        // }
 
     }
 

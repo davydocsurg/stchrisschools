@@ -44,90 +44,188 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        {
-            // dd($request->profile_picture);
-            // Get validation rules
-            $validate = $this->create_teacher_rules($request);
+        // dd($request->profile_picture);
+        // Get validation rules
+        $validate = $this->create_teacher_rules($request);
+
+        // Run validation
+        if ($validate->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validate->errors(),
+                'status' => 400,
+            ]);
+        }
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if ($request->hasFile('profile_picture')) {
+            // $old = $user->profile_picture;
+            // validate photo
+            $validateph = $this->profile_pics_rules($request);
 
             // Run validation
-            if ($validate->fails()) {
+            if ($validateph->fails()) {
                 return response()->json([
                     'success' => false,
-                    'message' => $validate->errors(),
+                    'message' => $validateph->errors(),
                     'status' => 400,
                 ]);
             }
+            // Attempt Photo Upload
+            $upload = Storage::put('/public/users/profile', $request->profile_picture);
+            $photo = basename($upload);
 
-            $user = User::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
+            $user->profile_picture = $photo;
 
-            if ($request->hasFile('profile_picture')) {
-                // $old = $user->profile_picture;
-                // validate photo
-                $validateph = $this->profile_pics_rules($request);
-
-                // Run validation
-                if ($validateph->fails()) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => $validateph->errors(),
-                        'status' => 400,
-                    ]);
-                }
-                // Attempt Photo Upload
-                $upload = Storage::put('/public/users/profile', $request->profile_picture);
-                $photo = basename($upload);
-
-                $user->profile_picture = $photo;
-
-                if (!$upload) {
-                    Storage::delete('/public/users/profile' . $photo);
-
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Oops! Something went wrong. Try Again!',
-                        'status' => 400,
-                    ]);
-                }
-                // $profile = Str::slug($user->first_name) . '-' . $user->id . '.' . $request->profile_picture->getClientOriginalExtension();
-                // $request->profile_picture->move(public_path('images/profile'), $profile);
-            } else {
-                $photo = $user->profile_picture;
-            }
-
-            $user->teacher()->create([
-                'gender' => $request->gender,
-                'teacher_phone' => $request->teacher_phone,
-                'date_of_birth' => $request->date_of_birth,
-                'current_address' => $request->current_address,
-                'permanent_address' => $request->permanent_address,
-            ]);
-
-            $user->assignRole('Teacher');
-
-            // Try teacher save or catch error if any
-            try {
-                $user->save();
-                // $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
+            if (!$upload) {
+                Storage::delete('/public/users/profile' . $photo);
 
                 return response()->json([
-                    'success' => true,
-                    'message' => 'Teacher\'s Created Successful',
-                    'status' => 200,
+                    'success' => false,
+                    'message' => 'Oops! Something went wrong. Try Again!',
+                    'status' => 400,
                 ]);
-            } catch (\Throwable $th) {
-                Log::error($th);
-                // Delete file
-                Storage::delete('/public/users/profile' . $upload);
-                return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
             }
-
+            // $profile = Str::slug($user->first_name) . '-' . $user->id . '.' . $request->profile_picture->getClientOriginalExtension();
+            // $request->profile_picture->move(public_path('images/profile'), $profile);
+        } else {
+            $photo = $user->profile_picture;
         }
+
+        $user->teacher()->create([
+            'gender' => $request->gender,
+            'teacher_phone' => $request->teacher_phone,
+            'date_of_birth' => $request->date_of_birth,
+            'current_address' => $request->current_address,
+            'permanent_address' => $request->permanent_address,
+        ]);
+
+        $user->assignRole('Teacher');
+
+        // Try teacher save or catch error if any
+        try {
+            $user->save();
+            // $old != 'avatar.png' ? Storage::delete('/public/users/profile/' . $old) : null;
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Teacher\'s Created Successful',
+                'status' => 200,
+            ]);
+        } catch (\Throwable $th) {
+            Log::error($th);
+            // Delete file
+            Storage::delete('/public/users/profile' . $upload);
+            return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+        }
+
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    // public function store(Request $request, User $user)
+    // {
+    //     // dd($request->all());
+    //     // Get validation rules
+    //     $validate = $this->create_teacher_rules($request);
+
+    //     // Run validation
+    //     if ($validate->fails()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => $validate->errors(),
+    //             'status' => 400,
+    //         ]);
+    //     }
+
+    //     $photos = [];
+    //     $teachers = [];
+    //     $users = [];
+
+    //     foreach ($request->first_name as $key => $first_name) {
+    //         if ($request->hasFile('profile_picture')) {
+    //             // validate photo
+    //             $validateph = $this->profile_pics_rules($request);
+
+    //             // Run validation
+    //             if ($validateph->fails()) {
+    //                 return response()->json([
+    //                     'success' => false,
+    //                     'message' => $validateph->errors(),
+    //                     'status' => 400,
+    //                 ]);
+    //             }
+    //             // Attempt Photo Upload
+    //             $upload = Storage::put('/public/users/profile', $request->profile_picture[$key]);
+
+    //             if (!$upload) {
+    //                 foreach ($photos as $photo) {
+    //                     Storage::delete('/public/users/profile' . $photo);
+    //                 }
+
+    //                 return response()->json([
+    //                     'success' => false,
+    //                     'message' => 'Oops! Something went wrong. Try Again!',
+    //                     'status' => 400,
+    //                 ]);
+    //             }
+    //             $photo = basename($upload);
+    //             array_push($photos, $photo);
+    //             $user->profile_picture = $photo;
+
+    //         } else {
+    //             $photo = $user->profile_picture;
+    //         }
+
+    //         array_push($users, [
+    //             'first_name' => $first_name,
+    //             'last_name' => $request->last_name[$key],
+    //             'email' => $request->email[$key],
+    //             'password' => Hash::make($request->password[$key]),
+    //         ]);
+
+    //         array_push($teachers, [
+    //             'gender' => $request->gender[$key],
+    //             'teacher_phone' => $request->teacher_phone[$key],
+    //             'date_of_birth' => $request->date_of_birth[$key],
+    //             'current_address' => $request->current_address[$key],
+    //             'permanent_address' => $request->permanent_address[$key],
+    //         ]);
+    //     }
+
+    //     $user->assignRole('Teacher');
+
+    //     // Try user()->teacher save or catch error if any
+    //     try {
+
+    //         User::insert($users);
+    //         Teacher::insert($teachers);
+
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Teachers Created Successful',
+    //             'status' => 200,
+    //         ]);
+    //     } catch (\Throwable $th) {
+    //         Log::error($th);
+    //         // Delete file
+    //         foreach ($photos as $photo) {
+    //             Storage::delete('/public/users/profile' . $upload);
+    //         }
+    //         return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
+    //     }
+
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -142,12 +240,21 @@ class TeacherController extends Controller
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
             'gender' => 'required|string',
             'teacher_phone' => 'required|numeric|digits_between:5,11|unique:teachers,teacher_phone',
             'date_of_birth' => 'required|date',
             'current_address' => 'required|string|max:255',
             'permanent_address' => 'required|string|max:255',
+            // 'first_name.*' => 'required|string|max:50',
+            // 'last_name.*' => 'required|string|max:50',
+            // 'email.*' => 'required|string|email|max:255|unique:users',
+            // 'password.*' => 'required|string|min:8',
+            // 'gender.*' => 'required|string',
+            // 'teacher_phone.*' => 'required|numeric|digits_between:5,11|unique:teachers,teacher_phone',
+            // 'date_of_birth.*' => 'required|date',
+            // 'current_address.*' => 'required|string|max:255',
+            // 'permanent_address.*' => 'required|string|max:255',
         ]);
     }
 
