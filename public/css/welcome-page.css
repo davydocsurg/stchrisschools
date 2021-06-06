@@ -1,0 +1,168 @@
+/** import variables **/
+body {
+  background: #e2d9e2 !important;
+}
+
+#navbar {
+  padding: 35px 10px;
+}
+
+/*************/
+.bg-primary-y {
+  background: #052342 !important;
+}
+
+.btn-primary-y {
+  background: #052342 !important;
+}
+
+.text-primary-y {
+  color: #052342 !important;
+}
+
+.active {
+  color: #052342 !important;
+  font-weight: bold !important;
+}
+
+.parallax {
+  /* The image used */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../assets/images/photo4.jpg") !important;
+  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../assets/images/photo4.jpg") !important;
+  /* Full height */
+  height: 100% !important;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten !important;
+}
+
+.barr:hover {
+  -webkit-transition: all 9s ease-in-out !important;
+  transition: all 9s ease-in-out !important;
+}
+
+.barr:hover .arr {
+  display: inline-block !important;
+  -webkit-animation-name: arrow;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: arrow;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  /* Safari 4.0 - 8.0 */
+  /* Standard syntax */
+}
+
+@-webkit-keyframes arrow {
+  from {
+    margin-left: -20px;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes arrow {
+  from {
+    margin-left: -20px;
+    opacity: 0;
+  }
+  to {
+    margin-left: 0px;
+    opacity: 1;
+  }
+}
+
+.about-title {
+  font-size: 3.5em;
+  color: #002147;
+  text-align: center;
+  position: relative;
+}
+
+.w3layouts_header p {
+  margin: .2em 0 1em !important;
+}
+
+.w3layouts_header p {
+  font-size: 2em !important;
+  color: #ffb71c;
+  position: relative;
+  margin: .5em 0 1em !important;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 1px;
+  line-height: 1.8em !important;
+  font-size: 1em !important;
+}
+
+.w3layouts_header p:before {
+  left: 41%;
+}
+
+.w3layouts_header p:after {
+  right: 41%;
+}
+
+.wthree-services-right {
+  position: absolute;
+  top: 21%;
+  right: 51%;
+}
+
+.wthree-services-bottom-grids {
+  position: relative;
+}
+
+.wthree-services-right {
+  position: absolute;
+  top: 15%;
+  right: 9%;
+}
+
+.wthree-about-grids {
+  padding-top: 7em;
+}
+
+.wthree-about-grids h4 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffb71c;
+}
+
+.wthree-services-bottom-grids {
+  position: relative;
+}
+
+img {
+  vertical-align: middle;
+}
+
+img {
+  border: 0;
+}
+
+.wthree-services-right {
+  position: absolute;
+  top: 15%;
+  right: 9%;
+}
+
+img {
+  vertical-align: middle;
+}
+
+img {
+  border: 0;
+}
+/*# sourceMappingURL=welcome-page.css.map */

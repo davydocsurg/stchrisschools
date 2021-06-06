@@ -1,0 +1,223 @@
+<div class="header-nav">
+      <div class="header-nav-wrapper navbar-scrolltofixed scroll-to-fixed-fixed" style="z-index: 999; position: fixed; top: 0px; margin-left: 0px; width: 1266px; left: 0px;">
+        <div class="container">
+          <nav id="menuzord" class="menuzord orange menuzord-responsive" style=""><a href="javascript:void(0)" class="showhide" style="display: none;"><em></em><em></em><em></em></a>
+            <ul class="menuzord-menu menuzord-indented scrollable" style="max-height: 400px;">
+              <li class="active"><a href="index.php">Home</a>
+              </li>
+              <li style=""><a href="#">About Us<span class="indicator"><i class="fa fa-angle-down"></i></span></a>
+                <ul class="dropdown" style="right: auto; display: none;">
+                  <li><a href="address.php">Welcome Address</a>
+                  </li><li><a href="school.php">Our School</a></li>
+                  <li><a href="directors.php">Board of Directors</a></li>
+                  <li><a href="achievements.php">Our Achievements</a></li>
+                  
+                </ul>
+              </li>
+			  <li><a href="vacancy.php">Job Vacancy</a>
+              </li>
+              <li style=""><a href="#">Media Centre<span class="indicator"><i class="fa fa-angle-down"></i></span></a>
+                <ul class="dropdown" style="right: auto; display: none;">
+                    <li><a href="news.php">News</a></li>
+                    <li><a href="events.php">Events</a></li>
+                    <li><a href="#">Facilities</a></li>
+                    <li><a href="#">Gallery</a></li>
+                </ul>
+              </li>
+              <li><a href="/private/exam.php">Exam</a>
+              </li><li><a href="/private/login.php">Login</a>
+              </li>
+			  <li><a href="contact.php">Contact Us</a>
+              </li>
+            <li class="scrollable-fix"></li></ul>
+            <div class="pull-right xs-pull-none mb-sm-15">
+              <a class="btn btn-colored btn-flat btn-theme-colored2 mt-15 mr-15 ml-15" href="/private/apply.php">Apply Now</a>
+              <a class="btn btn-colored btn-flat btn-theme-colored2 mt-15 mr-15 ml-15" href="/private/login.php">Login</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+
+
+
+.header-nav {
+    position: relative;
+}
+.header-nav {
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+element {
+    z-index: 999;
+    position: fixed;
+    top: 0px;
+    margin-left: 0px;
+    width: 1266px;
+    left: 0px;
+}
+.modern-header.modern-header-white .header-nav .header-nav-wrapper.scroll-to-fixed-fixed {
+    background: 
+    #fff;
+}
+.modern-header .header-nav .header-nav-wrapper.scroll-to-fixed-fixed {
+    margin-top: 0;
+    background: #222;
+}
+.modern-header .header-nav .header-nav-wrapper {
+    margin-top: -35px;
+    position: absolute;
+    z-index: 1111;
+    left: 0;
+    right: 0;
+}
+.header-nav .header-nav-wrapper {
+    box-shadow: 0 10px 20px 
+    rgba(0, 0, 0, 0.1);
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.container {
+    width: 1170px;
+}
+.container {
+    width: 970px;
+}
+.container {
+    width: 750px;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.btn-group-vertical > .btn-group::after, .btn-group-vertical > .btn-group::before, .btn-toolbar::after, .btn-toolbar::before, .clearfix::after, .clearfix::before, .container-fluid::after, .container-fluid::before, .container::after, .container::before, .dl-horizontal dd::after, .dl-horizontal dd::before, .form-horizontal .form-group::after, .form-horizontal .form-group::before, .modal-footer::after, .modal-footer::before, .modal-header::after, .modal-header::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
+    display: table;
+    content: " ";
+}
+
+.modern-header .header-nav .header-nav-wrapper.scroll-to-fixed-fixed nav {
+    background: 
+    transparent;
+}
+.header-nav .header-nav-wrapper .menuzord {
+    padding: 0;
+}
+.header-nav .header-nav-wrapper .menuzord {
+    padding: 0;
+}
+.menuzord {
+    width: 100%;
+    padding: 0 30px;
+    float: left;
+    position: relative;
+    background: #fff;
+}
+.menuzord, .menuzord * {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+
+
+.menuzord-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menuzord, .menuzord * {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+p, pre, ul, ol, dl, dd, blockquote, address, table, fieldset, form {
+    margin-bottom: 10px;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+pull-right {
+    float: right;
+}
+.menuzord, .menuzord * {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.pull-right {
+    float: right !important;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+group::before, .modal-footer::after, .modal-footer::before, .modal-header::after, .modal-header::before, .nav::after, .nav::before, .navbar-collapse::after, .navbar-collapse::before, .navbar-header::after, .navbar-header::before, .navbar::after, .navbar::before, .pager::after, .pager::before, .panel-body::after, .panel-body::before, .row::after, .row::before {
+    display: table;
+    content: " ";
+}
+::after, ::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
