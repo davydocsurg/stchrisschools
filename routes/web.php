@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+//  landing page
+Route::get('/', [ViewController::class, 'welcome'])->name('welcome');
+Route::get('/about-us', [ViewController::class, 'aboutUs'])->name('about-us');
+Route::get('/our-services', [ViewController::class, 'ourServices'])->name('our-services');
+Route::get('/contact-us', [ViewController::class, 'contactUs'])->name('contact-us');
 
 // guest routes
 

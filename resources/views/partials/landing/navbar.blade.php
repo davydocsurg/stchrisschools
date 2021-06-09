@@ -32,15 +32,19 @@
                     class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">About Us</a>
+                <a href="{{ route('about-us') }}"
+                    class="nav-link {{ request()->routeIs('about-us') ? 'active' : '' }}">About Us</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Our Services</a>
+                <a href="{{ route('our-services') }}"
+                    class="nav-link {{ request()->routeIs('our-services') ? 'active' : '' }}">Our Services</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="{{ route('contact-us') }}"
+                    class="nav-link {{ request()->routeIs('contact-us') ? 'active' : '' }}">Contact</a>
             </li>
-            <li class="nav-item dropdown">
+
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownComponent" href="#" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                 <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdownComponent">
@@ -51,10 +55,10 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             @auth
-                <li class="nav-item ">
+                <li class="nav-item d-lg-none">
                     <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                 </li>
             @endauth

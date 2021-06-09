@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
+    <title>
+        @yield('page_title') - {{ config('app.name') }}
+    </title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -17,27 +19,19 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/fontawesome-free/css/all.min.css') }}">
+
+    <!-- Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 
 <body>
-    <div class="">
-        @include('partials.landing.navbar')
 
-    </div>
+    @include('partials.landing.navbar')
 
-    <div class="">
-        @include('partials.landing.banner')
-    </div>
+    @yield('content')
 
-    <div class="">
-        @include('partials.landing.about')
-    </div>
-
-    @include('partials.landing.teachers')
-    @include('partials.landing.services')
-    @include('partials.landing.contact')
-
-    <footer class="bg-warning py-5">
+    <footer class="bg-warning py-5 mb-0">
         <div class="text-center font-weight-bold">
             <b>
                 ©️ 2021. All Rights Reserved. | Design By
@@ -50,6 +44,9 @@
     <script src="{{ asset('js/welcome-page.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ url('assets/dashboard/js/jquery.min.js') }}"></script>
+
+    {{-- animations --}}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </body>
 
 </html>

@@ -3,9 +3,9 @@
 
     <div class="justify-content-center mt-5">
         <div class="col-12 text-center">
-            <p class="display-4 text-primar text-center font-weight-bold mb-5">
-                ST CHRIS SCHOOLS
-            </p>
+            <h1 class="display-4 text-primar text-center font-weight-bold mb-5">
+                St. CHRIS SCHOOLS
+            </h1>
             <p class="card-text col-lg- text-dark-x mb-5">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia eveniet, reiciendis incidunt officia
                 eos natus quasi labore quo in sit corporis ut earum maxime quam amet voluptates asperiores nemo

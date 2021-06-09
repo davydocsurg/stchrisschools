@@ -2,11 +2,53 @@
 @import './variables/_color.scss';
 
 body {
-    background: #e2d9e2 !important;
+    background: #f5f2f5 !important;
+    scroll-behavior: smooth !important;
 }
 
 #navbar {
     padding: 35px 10px;
+    // margin: 1rem 1rem;
+}
+
+.grad{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.nav-item {
+  padding: 0 .7rem 0 .7rem !important;
+  font-size: medium;
+  font-weight: bold;
+
+  & :hover {
+    background: #002147 !important;
+    color: white !important;
+  }
+}
+
+.grad::before {
+  left: 41%;
+  content: '';
+  background:#676666;
+  height: 2px;
+  width: 5%;
+  position: absolute;
+  top: 46%;
+}
+
+.grad::after {
+  content: '';
+  background:#676666;
+  height: 2px;
+  width: 5%;
+  position: absolute;
+  top: 46%;
+}
+::before, ::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /*************/
@@ -45,6 +87,46 @@ body {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-blend-mode: lighten !important;
+}
+
+.parallax-x {
+  /* The image used */
+  background-image: linear-gradient(
+          to right,
+          rgb(211, 207, 207) 40%,
+          rgb(109, 109, 109) 100%
+      ),
+      url("../assets/images/ab3.jpg") !important;
+
+  /* Full height */
+  height: 100% !important;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: darken !important;
+}
+
+.parallax-abt {
+  /* The image used */
+  background-image: linear-gradient(
+          to right,
+          rgb(35, 35, 36) 40%,
+          rgb(20, 20, 20) 100%
+      ),
+      url("../assets/images/ab1.jpg") !important;
+
+  /* Full height */
+  height: 100% !important;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten !important;
 }
 
 .barr:hover {
@@ -87,17 +169,16 @@ body {
     color:#002147;
     text-align: center;
     // letter-spacing: 1px;
-    position: relative;
+    // position: relative;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
-  .w3layouts_header p {
-    margin: .2em 0 1em !important;
-}
-.w3layouts_header p {
+._header p {
     font-size: 2em !important;
     color:#ffb71c;
     position: relative;
-    margin: .5em 0 1em !important;
+    // margin: .5em 0 1em !important;
     text-align: center;
 }
 p {
@@ -108,14 +189,11 @@ p {
     line-height: 1.8em !important;
     font-size: 1em !important;
 }
-// p {
-//     margin: 0 0 10px !important;
-// }
 
-.w3layouts_header p:before {
+._header p:before {
   left: 41%;
 }
-.w3layouts_header p:after {
+._header p:after {
   right: 41%;
 }
 
@@ -164,3 +242,26 @@ img {
 img {
   border: 0;
 }
+
+@media screen and (max-width: 298px) {
+  ._xs{
+    font-size: 1.8rem !important;
+  }
+}
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 100%;
+    width: 100%;
+  }
+  .gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 100%;
+    width: 100%;
+  }
+  #gmap_canvas {
+    height: 100%;
+    width: 100%;
+  }
