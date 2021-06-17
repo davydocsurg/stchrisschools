@@ -2,8 +2,15 @@
 <!-- top bar -->
 <div class="container-fluid bg-primary-y p-1 fixed text-white">
     <div class="">
-        <div class="text- ml-5 mr-5">
-            <span class="none col-lg-">
+        {{-- <div class="col-lg-4">
+            <a class="navbar-brand bg-primary-y text-white" style="text-transform:uppercase !important;"
+                href="{{ route('welcome') }}">
+                <i class="fas fa-school"></i>
+                <b>{{ config('app.name') }}</b>
+            </a>
+        </div> --}}
+        <div class="container">
+            <span class="">
                 <i class="fas fa-phone-alt"></i> +234 802 412 3370, +234 706 556
                 6268
             </span>
@@ -19,14 +26,18 @@
 {{-- </div> --}}
 
 <nav class="navbar navbar-expand-lg navbar-white navbar-light" id="navbar">
-    <a class="navbar-brand" href="{{ route('welcome') }}"><i class="fas fa-school"></i> {{ config('app.name') }}</a>
+    <a class="navbar-brand bg-primary-y text-white" style="text-transform:uppercase !important;"
+        href="{{ route('welcome') }}">
+        <i class="fas fa-school"></i>
+        <b>{{ config('app.name') }}</b>
+    </a>
     <button class="navbar-toggler ml-auto float-right" type="button" data-toggle="collapse"
         data-target="#navbarContent1" aria-controls="navbarContent1" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarContent1">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto text-center">
             <li class="nav-item">
                 <a href="{{ route('welcome') }}"
                     class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}">Home</a>

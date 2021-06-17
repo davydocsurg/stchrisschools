@@ -31,10 +31,10 @@
             <div class="col-lg-6  col-md-12 col-sm-12">
                 <div class="wthree-services-bottom-grids">
                     <div class="wthree-services-left">
-                        <img src="{{ asset('assets/images/ab1.jpg') }}" class="img-fluid" alt="">
+                        {{-- <img src="{{ asset('assets/images/ab1.jpg') }}" class="img-fluid" alt=""> --}}
+                        <img src="{{ asset('images/landing/acd.jpg') }}" class="img-fluid" alt="">
                     </div>
                     <div class="wthree-services-right">
-                        <img src="{{ asset('assets/images/ab2.jpg') }}" class="img-fluid" alt="">
                     </div>
                     <div class="clearfix"> </div>
                 </div>

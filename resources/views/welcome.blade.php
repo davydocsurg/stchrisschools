@@ -10,7 +10,7 @@
     </title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet"> --}}
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}">
@@ -31,12 +31,13 @@
 
     @yield('content')
 
-    <footer class="bg-warning py-5 mb-0">
-        <div class="text-center font-weight-bold">
-            <b>
-                ©️ 2021. All Rights Reserved. | Design By
+    <footer class="bg-primary-y py-5 mb-0">
+        <div class="text-center text-white font-weight-bold">
+            <p>
+                ©️ 2021. All Rights Reserved. | Developed By <b class="font-weight-bold"
+                    style="font-weight: bolder !important">Information Capital</b>
 
-            </b>
+            </p>
         </div>
     </footer>
 

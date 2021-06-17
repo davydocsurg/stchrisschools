@@ -4,7 +4,7 @@
     <div class="justify-content-center mt-5">
         <div class="col-12 text-center">
             <h1 class="display-4 text-primar text-center font-weight-bold mb-5">
-                St. CHRIS SCHOOLS
+                {{ config('app.name') }}
             </h1>
             <p class="card-text col-lg- text-dark-x mb-5">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia eveniet, reiciendis incidunt officia

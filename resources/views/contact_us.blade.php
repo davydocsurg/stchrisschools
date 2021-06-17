@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid bg-dark text-white parallax-abt p-5" style="max-height: 350rem !important;">
+    <div class="container-fluid bg-dark text-white parallax-contact p-5" style="max-height: 350rem !important;">
 
         <div class="justify-content-center mt-5">
             <div class="col-12 text-center">

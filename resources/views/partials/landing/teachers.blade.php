@@ -4,7 +4,7 @@
 
             <div class="row text-center justify-content-center align-items-center">
                 {{-- <div class="col-lg-3 col-sm-12 mb-2">
-                    <div class="card bg-warning">
+                    <div class="card bg-pink-y">
                         <div class="card-body">
                             <b></b>
                             <br>
@@ -21,7 +21,7 @@
                         <br>
                     </div>
 
-                    <div class="card bg-warning">
+                    <div class="card bg-pink-y">
                         <div class="card-body">
                             <h3>Teachers</h3>
                         </div>
@@ -35,7 +35,7 @@
                         <b class="display-4 my-3">{{ count($parents) }}</b>
                         <br>
                     </div>
-                    <div class="card bg-warning">
+                    <div class="card bg-pink-y">
                         <div class="card-body">
                             <h3>Parents</h3>
                         </div>
@@ -48,7 +48,7 @@
                         <br>
                         <b class="display-4 my-3">{{ count($students) }}</b>
                     </div>
-                    <div class="card bg-warning">
+                    <div class="card bg-pink-y">
                         <div class="card-body">
                             <h3 class="">Students</h3>
                         </div>

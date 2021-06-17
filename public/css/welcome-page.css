@@ -5,7 +5,7 @@ body {
 }
 
 #navbar {
-  padding: 35px 10px;
+  height: 7rem;
 }
 
 .grad {
@@ -14,19 +14,22 @@ body {
 }
 
 .nav-item {
-  padding: 0 .7rem 0 .7rem !important;
+  padding: 0 0.7rem 0 0.7rem !important;
   font-size: medium;
   font-weight: bold;
 }
 
 .nav-item :hover {
-  background: #002147 !important;
+  background: #08437e !important;
   color: white !important;
+  -webkit-transition: all 1s ease-in-out !important;
+  transition: all 1s ease-in-out !important;
+  border-radius: 50% !important;
 }
 
 .grad::before {
   left: 41%;
-  content: '';
+  content: "";
   background: #676666;
   height: 2px;
   width: 5%;
@@ -35,7 +38,7 @@ body {
 }
 
 .grad::after {
-  content: '';
+  content: "";
   background: #676666;
   height: 2px;
   width: 5%;
@@ -43,22 +46,23 @@ body {
   top: 46%;
 }
 
-::before, ::after {
+::before,
+::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 /*************/
 .bg-primary-y {
-  background: #052342 !important;
+  background: #08437e !important;
 }
 
 .btn-primary-y {
-  background: #052342 !important;
+  background: #08437e !important;
 }
 
 .text-primary-y {
-  color: #052342 !important;
+  color: #08437e !important;
 }
 
 .active {
@@ -68,8 +72,8 @@ body {
 
 .parallax {
   /* The image used */
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../assets/images/photo4.jpg") !important;
-  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../assets/images/photo4.jpg") !important;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../images/landing/banners.jpg") !important;
+  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../images/landing/banners.jpg") !important;
   /* Full height */
   height: 100% !important;
   /* Create the parallax scrolling effect */
@@ -82,8 +86,8 @@ body {
 
 .parallax-x {
   /* The image used */
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #d3cfcf), to(#6d6d6d)), url("../assets/images/ab3.jpg") !important;
-  background-image: linear-gradient(to right, #d3cfcf 40%, #6d6d6d 100%), url("../assets/images/ab3.jpg") !important;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #b0b0b1), color-stop(60%, #8b8888)), url("../assets/images/ab3.jpg") !important;
+  background-image: linear-gradient(to right, #b0b0b1 40%, #8b8888 60%), url("../assets/images/ab3.jpg") !important;
   /* Full height */
   height: 100% !important;
   /* Create the parallax scrolling effect */
@@ -96,8 +100,36 @@ body {
 
 .parallax-abt {
   /* The image used */
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../assets/images/ab1.jpg") !important;
-  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../assets/images/ab1.jpg") !important;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../images/landing/abt_banner.jpg") !important;
+  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../images/landing/abt_banner.jpg") !important;
+  /* Full height */
+  height: 100% !important;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten !important;
+}
+
+.parallax-serv {
+  /* The image used */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../images/landing/serv_banner.jpg") !important;
+  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../images/landing/serv_banner.jpg") !important;
+  /* Full height */
+  height: 100% !important;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: lighten !important;
+}
+
+.parallax-contact {
+  /* The image used */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../images/landing/contact-us.jpg") !important;
+  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../images/landing/contact-us.jpg") !important;
   /* Full height */
   height: 100% !important;
   /* Create the parallax scrolling effect */
@@ -150,7 +182,7 @@ body {
 
 .about-title {
   font-size: 3.5em;
-  color: #002147;
+  color: #08437e;
   text-align: center;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -158,14 +190,14 @@ body {
 
 ._header p {
   font-size: 2em !important;
-  color: #ffb71c;
+  color: #d464d8;
   position: relative;
   text-align: center;
 }
 
 p {
   margin: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   letter-spacing: 1px;
   line-height: 1.8em !important;
   font-size: 1em !important;
@@ -195,14 +227,14 @@ p {
   right: 9%;
 }
 
-.wthree-about-grids {
+.intro {
   padding-top: 7em;
 }
 
-.wthree-about-grids h4 {
+.intro h4 {
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #ffb71c;
+  color: #08437e;
 }
 
 .wthree-services-bottom-grids {
@@ -254,5 +286,18 @@ img {
 #gmap_canvas {
   height: 100%;
   width: 100%;
+}
+
+.serv-- {
+  color: #d464d8;
+}
+
+/****************************************************/
+.btn-pink-y {
+  background-color: #d464d8 !important;
+}
+
+.bg-pink-y {
+  background-color: #d464d8 !important;
 }
 /*# sourceMappingURL=welcome-page.css.map */

@@ -9,7 +9,8 @@
 
         <div class="col-lg-4  col-md-6 col-sm-12">
             <div class="text-center">
-                <span class="fa fa-graduation-cap display-4 my-4" style="color: #ffb71c;" aria-hidden="true"></span>
+                <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                    aria-hidden="true"></span>
                 <h5>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati, commodi modi laudantium,
                 </h5>
@@ -21,13 +22,14 @@
                 <h5>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati, commodi modi laudantium,
                 </h5>
-                <span class="fa fa-user display-4 my-4" style="color: #ffb71c;" aria-hidden="true"></span>
+                <span class="fa fa-user display-4 serv-- my-4" style="color: $pink-y;" aria-hidden="true"></span>
             </div>
         </div>
 
         <div class="col-lg-4  col-md-6 col-sm-12">
             <div class="text-center">
-                <span class="fa fa-graduation-cap display-4 my-4" style="color: #ffb71c;" aria-hidden="true"></span>
+                <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                    aria-hidden="true"></span>
                 <h5>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati, commodi modi laudantium,
                 </h5>
