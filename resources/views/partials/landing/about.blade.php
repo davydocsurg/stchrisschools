@@ -12,7 +12,7 @@
         <div class="col-lg-6  col-md-12 col-sm-12">
             <div class="wthree-services-bottom-grids">
                 <div class="wthree-services-left">
-                    <img src="{{ asset('images/landing/acd.jpg') }}" class="img-fluid" alt="">
+                    <img src="{{ asset('images/landing/acd.jpg') }}" class="img-fluid" alt="" data-aos="zoom-in-up">
                     {{-- <img src="{{ asset('assets/images/ab2.jpg') }}" class="img-fluid" alt=""> --}}
                 </div>
                 <div class="wthree-services-right">
@@ -25,7 +25,13 @@
 
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="intro">
-                <h4 class="text-center">Welcome to {{ config('app.name') }}</h4>
+                <h4 class="text-center" data-aos="">
+                    Christutors International Academy Aba was established in September 2014,with a view to help in
+                    moulding
+                    children and encouraging early learning in them. To develop children who will grow to understand
+                    that, "living a successful life will require faith, love and courage". To also instill
+                    self-confidence, academic excellence and discipline.
+                </h4>
             </div>
         </div>
     </div>

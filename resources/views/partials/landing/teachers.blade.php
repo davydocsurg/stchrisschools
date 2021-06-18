@@ -13,7 +13,7 @@
                     </div>
                 </div> --}}
 
-                <div class="col-lg-3 col-sm-12 mb-2">
+                <div class="col-lg-3 col-sm-12 mb-2" data-aos="fade-up">
                     <div class="text-center text-white my-4">
                         <i class="fas fa-chalkboard-teacher display-4"></i>
                         <br>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-sm-12 mb-2">
+                <div class="col-lg-3 col-sm-12 mb-2" data-aos="fade-up">
                     <div class="text-center text-white my-4">
                         <i class="fas fa-user-tie display-4"></i>
                         <br>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-sm-12 mb-2">
+                <div class="col-lg-3 col-sm-12 mb-2" data-aos="fade-up">
                     <div class="text-center text-white my-4">
                         <i class="fas fa-users display-4"></i>
                         <br>

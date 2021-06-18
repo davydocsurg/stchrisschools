@@ -17,11 +17,6 @@
                     class="display-4 text-primar text-center d-none d-lg-inline-block d-md-inline-block font-weight-bold mb-5">
                     CONTACT US
                 </h1>
-                <p class="card-text col-lg- text-dark-x mb-5">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia eveniet, reiciendis incidunt officia
-                    eos natus quasi labore quo in sit corporis ut earum maxime quam amet voluptates asperiores nemo
-                    consectetur.
-                </p>
 
             </div>
 
@@ -73,8 +68,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6">
+        {{-- <div class="row"> --}}
+        {{-- <div class="col-lg-6">
                 <div class="card shadow-lg" style="border: 0 !important; cursor: pointer;" v-scrollAnime>
                     <div class="card-body pt-5">
                         <div class="row mt-5">
@@ -117,18 +112,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-lg-6">
-                <div class="mapouter">
-                    <div class="gmap_canvas">
-                        <iframe id="gmap_canvas" class="img-fluid"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.7206724814478!2d7.33624641476408!3d5.148591196263695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10429a31a6ccbc9f%3A0xbbb53986e3822beb!2sUmuodu%20Rd%2C%20Aba!5e0!3m2!1sen!2sng!4v1611151493479!5m2!1sen!2sng"
-                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                            href="https://yt2.org"></a><br />
-                    </div>
+        <div class="col-lg-12">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe id="gmap_canvas" class="img-fluid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.7206724814478!2d7.33624641476408!3d5.148591196263695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10429a31a6ccbc9f%3A0xbbb53986e3822beb!2sUmuodu%20Rd%2C%20Aba!5e0!3m2!1sen!2sng!4v1611151493479!5m2!1sen!2sng"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                        href="https://yt2.org"></a><br />
                 </div>
             </div>
         </div>
+        {{-- </div> --}}
     </div>
 @endsection

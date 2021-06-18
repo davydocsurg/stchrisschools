@@ -1,11 +1,11 @@
 /** import variables **/
 body {
-  background: #f5f2f5 !important;
+  background: #f8f7f8 !important;
   scroll-behavior: smooth !important;
 }
 
 #navbar {
-  height: 7rem;
+  padding: 35px 10px;
 }
 
 .grad {
@@ -114,8 +114,8 @@ body {
 
 .parallax-serv {
   /* The image used */
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(40%, #232324), to(#141414)), url("../images/landing/serv_banner.jpg") !important;
-  background-image: linear-gradient(to right, #232324 40%, #141414 100%), url("../images/landing/serv_banner.jpg") !important;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(60%, #050505), to(#050505)), url("../images/landing/serv_banner.jpg") !important;
+  background-image: linear-gradient(to right, #050505 60%, #050505 100%), url("../images/landing/serv_banner.jpg") !important;
   /* Full height */
   height: 100% !important;
   /* Create the parallax scrolling effect */
@@ -232,7 +232,6 @@ p {
 }
 
 .intro h4 {
-  text-transform: uppercase;
   letter-spacing: 1px;
   color: #08437e;
 }
@@ -284,12 +283,12 @@ img {
 }
 
 #gmap_canvas {
-  height: 100%;
+  height: 22rem;
   width: 100%;
 }
 
 .serv-- {
-  color: #d464d8;
+  color: #08437e;
 }
 
 /****************************************************/
@@ -299,5 +298,23 @@ img {
 
 .bg-pink-y {
   background-color: #d464d8 !important;
+}
+
+.text-primary-y {
+  color: #08437e !important;
+}
+
+@media screen and (max-width: 478px) {
+  .display-4 {
+    font-size: 2rem !important;
+  }
+  .display-4x {
+    font-size: 1.2rem !important;
+  }
+}
+
+.card {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 /*# sourceMappingURL=welcome-page.css.map */

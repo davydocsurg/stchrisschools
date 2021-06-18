@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <div class="card-body text-center">
                     <i class="fas fa-map-marker-alt my-2 about-title"></i>
                     <p>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card" data-aos="fade-up">
                 <div class="card-body text-center">
                     <i class="fas fa-phone my-2 about-title"></i>
                     <p>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" data-aos="fade-up">
             <div class="card">
                 <div class="card-body text-center">
                     <i class="fas fa-envelope my-2 about-title"></i>
