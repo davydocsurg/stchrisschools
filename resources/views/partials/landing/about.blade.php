@@ -25,12 +25,17 @@
 
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="intro">
-                <h4 class="text-center" data-aos="">
-                    Christutors International Academy Aba was established in September 2014,with a view to help in
-                    moulding
-                    children and encouraging early learning in them. To develop children who will grow to understand
+                <h4 class="text-left text-md-center text-dark" data-aos="">
+                    Christutors International Academy Aba was established in September 2014, with a view to helping
+                    to mould
+                    children and encouraging early learning in them. We seek to develop children who will grow to
+                    understand that living a successful life will require faith, love and courage.
+                    <br>
+                    Also, we instill self-confidence, academic excellence, discipline and the fear of God, the creator
+                    of mankind.
+                    {{-- To develop children who will grow to understand
                     that, "living a successful life will require faith, love and courage". To also instill
-                    self-confidence, academic excellence and discipline.
+                    self-confidence, academic excellence and discipline. --}}
                 </h4>
             </div>
         </div>

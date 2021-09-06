@@ -23,6 +23,7 @@ Route::get('/our-services', [ViewController::class, 'ourServices'])->name('our-s
 Route::get('/contact-us', [ViewController::class, 'contactUs'])->name('contact-us');
 
 // guest routes
+Route::get('remedial/register', [ViewController::class, 'remedialPage'])->name('remedial_sign_up');
 
 // student registeration
 Route::post('/student_signup', [RegisterController::class, 'signUpAsStudent'])->name('student_sign_up');

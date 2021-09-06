@@ -140,7 +140,8 @@ class LessonController extends Controller
     {
         // Make and return validation rules
         return Validator::make($request->all(), [
-            'lesson_video' => 'file|mimetypes:video/avi,video/mpeg,video/quicktime,video/mp4|unique:lessons,lesson_video',
+            'lesson_video' => 'file|unique:lessons,lesson_video',
+            // 'lesson_video' => 'file|mimetypes:video/avi,video/mpeg,video/quicktime,video/mp4|unique:lessons,lesson_video',
         ]);
     }
 
@@ -257,6 +258,6 @@ class LessonController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

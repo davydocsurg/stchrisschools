@@ -39,4 +39,10 @@ class ViewController extends Controller
     {
         return view('contact_us');
     }
+
+    // registration
+    public function remedialPage()
+    {
+        return view('registration_pages.remedials');
+    }
 }

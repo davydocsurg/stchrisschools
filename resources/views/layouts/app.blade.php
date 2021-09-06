@@ -31,13 +31,15 @@
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/MagnificPopup/magnific-popup.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    {{-- mdb --}}
+    @yield('page_css')
 </head>
 
 <body>
     <div id="app" class="animsition">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-dark" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -72,8 +74,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -123,9 +126,10 @@
     </script>
     <script src="{{ url('assets/js/main.js') }}"></script>
 
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
     <script src="{{ asset('js/custom.js') }}"></script>
+    @yield('page_js')
     @stack('scripts')
 </body>
 

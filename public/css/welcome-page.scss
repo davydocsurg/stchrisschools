@@ -1,13 +1,18 @@
 /** import variables **/
 @import "./variables/_color.scss";
 
-body {
-    background: #f8f7f8 !important;
+html {
     scroll-behavior: smooth !important;
+}
+
+body {
+    background: $background-color !important;
+    // font-size: 2rem !important;
 }
 
 #navbar {
     padding: 35px 10px;
+    transition: all .7s ease;
     // height: 7rem;
     // margin: 1rem 1rem;
 }
@@ -19,14 +24,14 @@ body {
 
 .nav-item {
     padding: 0 0.7rem 0 0.7rem !important;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
 
     & :hover {
-        background: $primary-y !important;
-        color: white !important;
-        transition: all 1s ease-in-out !important;
-        border-radius: 50% !important;
+        // background: $primary-y !important;
+        color: $primary-y !important;
+        transition: all 0.5s ease-in-out !important;
+        // border-radius: 50% !important;
     }
 }
 
@@ -308,6 +313,7 @@ img {
 
 .serv-- {
     color: $primary-y;
+    font-size: 22px !important;
 }
 
 /****************************************************/

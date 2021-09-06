@@ -18,11 +18,11 @@
                 <div class="card-body">
                     <div class="text-center" data-aos="flip-left" data-aos-easing="ease-out-cubic"
                         data-aos-duration="800">
-                        <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                        <span class="fa fa-graduation-cap  serv-- my-4" style="color: $pink-y;"
                             aria-hidden="true"></span>
-                        <h5>
+                        <h3>
                             Pre-nursery
-                        </h5>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -32,11 +32,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center" data-aos="zoom-in-right">
-                        <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                        <span class="fa fa-graduation-cap  serv-- my-4" style="color: $pink-y;"
                             aria-hidden="true"></span>
-                        <h5>
+                        <h3>
                             Nursery
-                        </h5>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -46,11 +46,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center" data-aos="zoom-in-left">
-                        <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                        <span class="fa fa-graduation-cap  serv-- my-4" style="color: $pink-y;"
                             aria-hidden="true"></span>
-                        <h5>
+                        <h3>
                             Primary
-                        </h5>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -60,11 +60,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center" data-aos="zoom-in-left">
-                        <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                        <span class="fa fa-graduation-cap  serv-- my-4" style="color: $pink-y;"
                             aria-hidden="true"></span>
-                        <h5>
+                        <h3>
                             Secondary
-                        </h5>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -74,11 +74,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center" data-aos="zoom-in-left">
-                        <span class="fa fa-graduation-cap display-4 serv-- my-4" style="color: $pink-y;"
+                        <span class="fa fa-graduation-cap  serv-- my-4" style="color: $pink-y;"
                             aria-hidden="true"></span>
-                        <h5>
-                            Remedia
-                        </h5>
+                        <h3>
+                            Remedial
+                        </h3>
                     </div>
                 </div>
             </div>

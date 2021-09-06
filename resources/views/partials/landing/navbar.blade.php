@@ -9,29 +9,40 @@
                 <b>{{ config('app.name') }}</b>
             </a>
         </div> --}}
-        <div class="container">
-            <span class="">
-                <i class="fas fa-phone-alt"></i> +234 802 412 3370, +234 706 556
-                6268
-            </span>
-            <!-- <br class="d-none d-lg-inline-block d-sm-block" /> -->
-            <span class="ml-3">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:stchris@gmail.com" class="text-white font-weight-bold">
-                    stchris@gmail.com</a>
-            </span>
+        <div class="container text-sm-center">
+            <div class="row">
+                <div class="col-sm-12 col-lg-4">
+                    <span class="">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+2348032940163" class="text-white">+234 803 294 0163</a>
+                        , <a href="tel:+2348173553145" class="text-white">+234 817 355 3145</a>
+                    </span>
+                </div>
+                <!-- <br class="d-none d-lg-inline-block d-sm-block" /> -->
+                <div class="col-sm-12 col-lg-4">
+                    <span class="ml-sm-none">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:christutors@yahoo.com" class="text-white font-weight-bold">
+                            christutors@yahoo.com
+                        </a>
+                        <a href="mailto:christutors@gmail.com" class="text-white font-weight-bold">
+                            christutors@gmail.com
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {{-- </div> --}}
 
 <nav class="navbar navbar-expand-lg navbar-white navbar-light" id="navbar">
-    <a class="navbar-brand bg-primary-y text-white" style="text-transform:uppercase !important;"
+    <a class="navbar-brand bg-primary-y text-white mr-auto" style="text-transform:uppercase !important;"
         href="{{ route('welcome') }}">
         <i class="fas fa-school"></i>
         <b>{{ config('app.name') }}</b>
     </a>
-    <button class="navbar-toggler ml-auto float-right" type="button" data-toggle="collapse"
+    <button class="navbar-toggler ml-auto mr-0 float-right" type="button" data-toggle="collapse"
         data-target="#navbarContent1" aria-controls="navbarContent1" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -10,7 +10,7 @@
     </title>
 
     <!-- Fonts -->
-    {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/adminlte/adminlte.min.css') }}">
@@ -36,10 +36,16 @@
     @yield('content')
 
     <footer class="bg-primary-y py-5 mb-0">
-        <div class="text-center text-white font-weight-bold">
+        <div class="text-center text-white font-weight-">
             <p>
-                ©️ 2021. All Rights Reserved. | Developed By <b class="font-weight-bold"
-                    style="font-weight: bolder !important">Information Capital</b>
+                ©️ 2021. All Rights Reserved.
+                <br>
+                Developed By <b>Information Realm (
+                    <a class="text-white text-hover-warning" href="tel:+2347035117041">+234 703 511
+                        7041,</a>
+                    <a class="text-white text-hover-warning" href="tel:+2348055463662"> +234 805 546
+                        3662</a>
+                    )</b>.
 
             </p>
         </div>

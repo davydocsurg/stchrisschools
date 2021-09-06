@@ -22,11 +22,14 @@
                         <button class="btn btn-outline-dark btn-md" id="studentBtn">
                             Student <i class="fas fa-user-graduate"></i>
                         </button>
+                        <button class="btn btn-outline-dark btn-md" id="remedialBtn">
+                            Remedial <i class="fas fa-user-graduate"></i>
+                        </button>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
 
 
                 {{-- parent's only --}}
@@ -401,6 +404,10 @@
                     </div>
                 </div>
                 {{-- end of students --}}
+
+                {{-- remedials only --}}
+                {{-- @include('partials/auth/remedials') --}}
+                {{-- end of remedials --}}
             </div>
 
         </div>
@@ -413,8 +420,8 @@
 @push('scripts')
     <script>
         $(document).ready(() => {
-            // hide all forms
             hideAllRegistrations()
+            // hide all forms
 
             //
             $('#parentBtn').click(function() {
@@ -426,6 +433,10 @@
             $('#studentBtn').click(function() {
                 hideParentRegistration()
                 showStudentRegistration()
+            })
+
+            $('#remedialBtn').click(function() {
+                location.href = `{{ route('remedial_sign_up') }}`
             })
 
             //

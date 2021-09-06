@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Grade;
-use App\Parents;
-use App\Student;
-use App\User;
+use App\Remdial;
+use App\Remedial;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class StudentController extends Controller
+class RemedialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with('student_class')->latest()->paginate(10);
+        $students = Remdial::with('remedial_class')->latest()->paginate(10);
 
-        return view('backend.students.index', compact('students'));
+        return view('backend.remedials.index', compact('remedials'));
     }
 
     /**
@@ -35,9 +35,8 @@ class StudentController extends Controller
     public function create()
     {
         $classes = Grade::latest()->get();
-        $parents = Parents::with('user')->latest()->get();
 
-        return view('backend.students.create', compact('classes', 'parents'));
+        return view('backend.remedials.create', compact('classes'));
     }
 
     /**
@@ -50,7 +49,7 @@ class StudentController extends Controller
     {
         // dd($request->all());
         // Get validation rules
-        $validate = $this->create_student_rules($request);
+        $validate = $this->create_remedial_rules($request);
 
         // Run validation
         if ($validate->fails()) {
@@ -101,18 +100,17 @@ class StudentController extends Controller
             $photo = $user->profile_picture;
         }
 
-        $user->student()->create([
+        $user->remedial()->create([
             'gender' => $request->gender,
-            'student_phone' => $request->student_phone,
+            'remedial_phone' => $request->remedial_phone,
             'roll_number' => $request->roll_number,
-            'parent_id' => $request->parent_id,
             'class_id' => $request->class_id,
             'date_of_birth' => $request->date_of_birth,
             'current_address' => $request->current_address,
             'permanent_address' => $request->permanent_address,
         ]);
 
-        $user->assignRole('Student');
+        $user->assignRole('Remedial');
 
         // Try user save or catch error if any
         try {
@@ -139,25 +137,24 @@ class StudentController extends Controller
      * @param  request  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create_student_rules(Request $request)
+    public function create_remedial_rules(Request $request)
     {
         // Make and return validation rules
         return Validator::make($request->all(), [
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users',
-            'parent_id' => 'required|numeric',
             'class_id' => 'required|numeric',
             'roll_number' => [
                 'required',
                 'numeric',
-                Rule::unique('students')->where(function ($query) use ($request) {
+                Rule::unique('remedials')->where(function ($query) use ($request) {
                     return $query->where('class_id', $request->class_id);
                 }),
             ],
             'password' => 'required|string|min:8|confirmed',
             'gender' => 'required|string',
-            'student_phone' => 'required|numeric|digits_between:5,11|unique:students,students_phone',
+            'remedial_phone' => 'required|numeric|digits_between:5,11|unique:remedials,remedial_phone',
             'date_of_birth' => 'required|date',
             'current_address' => 'required|string|max:255',
             'permanent_address' => 'required|string|max:255',
@@ -195,12 +192,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Remedial $remedial)
     {
         $classes = Grade::latest()->get();
-        $parents = Parents::with('user')->latest()->get();
 
-        return view('backend.students.edit', compact('classes', 'parents', 'student'));
+        return view('backend.remedials.edit', compact('classes', 'student'));
     }
 
     /**
@@ -210,19 +206,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Remdial $remedial)
     {
         // validate request
         $request->validate([
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->user_id,
-            'parent_id' => 'required|numeric',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $remedial->user_id,
             'class_id' => 'required|numeric',
             'roll_number' => [
                 'required',
                 'numeric',
-                Rule::unique('students')->ignore($student->id)->where(function ($query) use ($request) {
+                Rule::unique('students')->ignore($remedial->id)->where(function ($query) use ($request) {
                     return $query->where('class_id', $request->class_id);
                 }),
             ],
@@ -234,7 +229,7 @@ class StudentController extends Controller
             'permanent_address' => 'required|string|max:255',
         ]);
 
-        $user = User::findOrFail($student->user_id);
+        $user = User::findOrFail($remedial->user_id);
 
         if ($request->hasFile('profile_picture')) {
             // $old = $user->profile_picture;
@@ -269,18 +264,17 @@ class StudentController extends Controller
             $photo = $user->profile_picture;
         }
 
-        $student->user()->update([
+        $remedial->user()->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             // 'password' => Hash::make($request->password),
         ]);
 
-        $student->update([
+        $remedial->update([
             'gender' => $request->gender,
-            'student_phone' => $request->student_phone,
+            'remedial' => $request->remedial,
             'roll_number' => $request->roll_number,
-            'parent_id' => $request->parent_id,
             'class_id' => $request->class_id,
             'date_of_birth' => $request->date_of_birth,
             'current_address' => $request->current_address,
@@ -300,7 +294,7 @@ class StudentController extends Controller
         } catch (\Throwable $th) {
             Log::error($th);
             // Delete file
-            Storage::delete('/public/users/profile' . $upload);
+            Storage::delete('/public/users/profile/' . $upload);
             return response()->json(['success' => false, 'status' => 500, 'message' => 'Oops! Something went wrong. Try Again!']);
         }
     }
@@ -311,18 +305,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Remedial $remedial)
     {
-        $user = User::findOrFail($student->user_id);
+        $user = User::findOrFail($remedial->user_id);
 
-        $user->removeRole('Student');
+        $user->removeRole('Remedial');
 
         if ($user->delete()) {
-            $photo = $student->profile_picture;
+            $photo = $remedial->profile_picture;
             $photo != 'avatar.png' ? Storage::delete('/public/users/profile/' . $photo) : null;
 
         }
-        $user->student()->delete();
+        $user->remedial()->delete();
 
         return back();
     }
